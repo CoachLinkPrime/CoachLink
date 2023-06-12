@@ -14,7 +14,6 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -22,6 +21,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import LegalPage from '../LegalPage/LegalPage';
 import ExplinationPage from '../ExplinationPage/ExplinationPage';
+import HomeView from '../HomeView/HomeView';
 
 import './App.css';
 
@@ -63,7 +63,7 @@ function App() {
 						// logged in shows UserPage else shows LoginPage
 						exact
 						path='/user'>
-						<UserPage />
+						<HomeView />
 					</ProtectedRoute>
 
 					<ProtectedRoute
