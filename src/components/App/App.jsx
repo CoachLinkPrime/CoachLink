@@ -20,6 +20,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import LegalPage from '../LegalPage/LegalPage';
+import ExplinationPage from '../ExplinationPage/ExplinationPage';
 import HomeView from '../HomeView/HomeView';
 
 import './App.css';
@@ -48,7 +49,12 @@ function App() {
 						path='/about'>
 						<AboutPage />
 					</Route>
-
+					<Route
+						// shows AboutPage at all times (logged in or not)
+						exact
+						path='/explination'>
+						<ExplinationPage />
+					</Route>
 					{/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
