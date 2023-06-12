@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function RegisterForm() {
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -10,19 +11,25 @@ function RegisterForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const registerUser = (event) => {
-    event.preventDefault();
 
-    dispatch({
-      type: 'REGISTER',
-      payload: {
-        username: username,
-        password: password,
-        email: email
-      },
-    });
+	const registerUser = (event) => {
+		event.preventDefault();
+
+
+		if (username && password) {
+			dispatch({
+				type: 'REGISTER',
+				payload: {
+					username: username,
+					password: password,
+          email: email
+				},
+			});
+		} else {
+			dispatch({ type: 'REGISTRATION_INPUT_ERROR' });
+		}
     history.push('/legal');
-  }; // end registerUser
+	}; // end registerUser
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
