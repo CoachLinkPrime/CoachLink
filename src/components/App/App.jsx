@@ -19,6 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import WelcomePage from '../WelcomePage/WelcomePage';
+import LegalPage from '../LegalPage/LegalPage';
 
 import './App.css';
 
@@ -85,6 +87,18 @@ function App() {
 							// Otherwise, show the registration page
 							<RegisterPage />
 						)}
+					</Route>
+
+					<Route exact path = '/welcome'>
+					
+						<WelcomePage />
+
+					</Route>
+
+					<Route exact path = '/legal'>
+
+						<LegalPage />
+
 					</Route>
 
 					<Route exact path='/home'>
