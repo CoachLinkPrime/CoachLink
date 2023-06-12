@@ -50,6 +50,7 @@ CREATE TABLE "user" (
     "legal_status" BOOLEAN,
     "date_accepted" VARCHAR
 );
+
 CREATE TABLE "gig" (
     "id" SERIAL PRIMARY KEY,
     "user_id" INTEGER,

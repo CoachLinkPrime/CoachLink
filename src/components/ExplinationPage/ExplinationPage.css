@@ -1,0 +1,48 @@
+.slide-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .slide-content {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .register-ep{
+    display: inline-block;
+    padding: 6px 10px;
+    border-color: #C6E5F3;
+    border-width: 1px 1px 3px;
+    border-radius: 4px;
+    background-color: #91C3CA;
+    color: #f8f8f8;
+    font-size: .8rem;
+    outline: 0;
+    cursor: pointer;
+    margin-top: 60%;
+    margin-left: 70%;
+  }
+
+  button{
+    display: inline-block;
+    padding: 10px 20px;
+    border-color: #C6E5F3;
+    border-width: 1px 1px 3px;
+    border-radius: 4px;
+    background-color: #7EBBF1;
+    color: #f8f8f8;
+    font-size: 1.1rem;
+    outline: 0;
+    cursor: pointer;
+  }
+  .button:hover{
+    background-color: #91C3CA;
+    text-decoration: none;
+  }
+  
+  .login-link{
+    color: #7EBBF1;
+    text-decoration: underline;
+    cursor: pointer;
+  }
