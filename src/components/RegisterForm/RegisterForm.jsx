@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const registerUser = (event) => {
     event.preventDefault();
@@ -15,8 +18,10 @@ function RegisterForm() {
       payload: {
         username: username,
         password: password,
+        email: email
       },
     });
+    history.push('/legal');
   }; // end registerUser
 
   return (
@@ -27,7 +32,21 @@ function RegisterForm() {
           {errors.registrationMessage}
         </h3>
       )}
+
       <div>
+      <label htmlFor="email">
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={email}
+            required
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+
         <label htmlFor="username">
           Username:
           <input
