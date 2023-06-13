@@ -3,6 +3,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useHistory } from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import './HomeView.css';
+import BottomNavBar from '../BottomNavBar/BottomNavBar';
 
 function HomeView() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -19,9 +20,6 @@ function HomeView() {
       <img className='picture' src='/images/snowboard_dudes.jpeg' alt='snowboard dudes'/>
       <h4>Looking for Coaches</h4>
       <p>Click here  to create a gig for industry professionals to apply</p>
-    </div>
-    <div>
-      <LogOutButton className="btn" />
     </div>
     </>
   );

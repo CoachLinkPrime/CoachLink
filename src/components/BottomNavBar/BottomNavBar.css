@@ -1,0 +1,29 @@
+.bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #7EBBF1;
+}
+
+.nav-bot-link {
+    display: inline-block;
+    color: #f2f2f2;
+    background-color: #7EBBF1;
+    text-align: center;
+    padding: 24px 10px;
+    text-decoration: underline;
+    font-size: 15px;
+    flex: 1;
+    /* This to makea links take up all available space */
+
+    /* these last two make the logout button in
+    the nav bar look like another link */
+    border: none;
+    cursor: pointer;
+    outline: 0;
+}
+
+.nav-bot-link:hover {
+    background-color: #C6E5F3;
+}
