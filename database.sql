@@ -47,7 +47,7 @@ CREATE TABLE "user" (
     "phone_number" VARCHAR (10),
     "email" VARCHAR (100),
     "description" VARCHAR (1200),
-    "legal_status" BOOLEAN,
+    "legal_status" BOOLEAN DEFAULT FALSE,
     "date_accepted" VARCHAR
 );
 

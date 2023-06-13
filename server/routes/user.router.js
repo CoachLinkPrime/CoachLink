@@ -19,7 +19,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // is that the password gets encrypted before being inserted
 router.post('/register', async (req, res, next) => {
 	const username = req.body.username;
-  const email = req.body.email;
+	const email = req.body.email;
 	const password = encryptLib.encryptPassword(req.body.password);
 
 	const queryText = `INSERT INTO "user" (username, password, email)
@@ -46,6 +46,24 @@ router.post('/logout', (req, res) => {
 	// Use passport's built-in method to log out the user
 	req.logout();
 	res.sendStatus(200);
+});
+
+router.put('/:id', rejectUnauthenticated, async (req, res) => {
+	const id = req.body.userID;
+	const legalStatus = req.body.legalStatus;
+	//sql query will change the legal status depending on the user ID
+	const sqlQuery = `
+	UPDATE "user"
+	SET legal_status = $1
+	WHERE id = $2
+	`;
+	const sqlValues = [legalStatus, id];
+	try {
+		await pool.query(sqlQuery, sqlValues);
+		res.sendStatus(200);
+	} catch (err) {
+		console.log(err);
+	}
 });
 
 module.exports = router;
