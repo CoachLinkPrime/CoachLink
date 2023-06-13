@@ -7,6 +7,12 @@ import './HomeView.css';
 function HomeView() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  const history = useHistory();
+
+  const coachForm = () => {
+    history.push('./ineedacoach');
+  }
+
   return (
     <>
       <h2>Hello, {user.username}!</h2>
@@ -15,7 +21,7 @@ function HomeView() {
       <h4>Coaching Jobs</h4>
       <p>Click here to find available shifts</p>
     </div>
-    <div className ='card'>
+    <div className ='card' onClick={coachForm}>
       <img className='picture' src='/images/snowboard_dudes.jpeg' alt='snowboard dudes'/>
       <h4>Looking for Coaches</h4>
       <p>Click here  to create a gig for industry professionals to apply</p>
