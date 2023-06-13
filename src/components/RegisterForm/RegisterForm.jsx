@@ -16,7 +16,7 @@ function RegisterForm() {
 		event.preventDefault();
 
 
-		if (username && password) {
+		if (username && password && email) {
 			dispatch({
 				type: 'REGISTER',
 				payload: {
