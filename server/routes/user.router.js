@@ -14,6 +14,27 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 	res.send(req.user);
 });
 
+// This GET route fetches the profile information
+router.get('/profile', rejectUnauthenticated, (req, res) => {
+	let sqlQuery = `
+	SELECT 
+		"user".username,
+		"user".email
+	FROM "user"
+	WHERE id=($1);
+	`
+	let sqlValues = [req.user.id];
+
+	pool.query(sqlQuery, sqlValues)
+	.then((dbRes) => {
+		console.log('Result from username and email GET for profile info', dbRes.rows);
+		res.send(dbRes.rows);
+	}).catch((dbErr) => {
+		console.log('ERROR fetching profile data', dbErr);
+		res.sendStatus(500);
+	});
+});
+
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted

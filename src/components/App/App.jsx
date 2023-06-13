@@ -20,6 +20,7 @@ import WelcomePage from '../WelcomePage/WelcomePage';
 import LegalPage from '../LegalPage/LegalPage';
 import ExplinationPage from '../ExplinationPage/ExplinationPage';
 import HomeView from '../HomeView/HomeView';
+import Overview from '../Overview/Overview';
 
 import './App.css';
 import BottomNavBar from '../BottomNavBar/BottomNavBar';
@@ -70,6 +71,14 @@ function App() {
 						path='/info'>
 						<InfoPage />
 					</ProtectedRoute>
+
+					<ProtectedRoute
+						// logged in shows Overview else shows LoginPage
+						exact
+						path='/overview'>
+						<Overview />
+					</ProtectedRoute>
+
 
 					<Route exact path='/login'>
 						{user.id ? (
