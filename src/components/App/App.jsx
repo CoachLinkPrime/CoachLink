@@ -21,6 +21,7 @@ import LegalPage from '../LegalPage/LegalPage';
 import ExplinationPage from '../ExplinationPage/ExplinationPage';
 import HomeView from '../HomeView/HomeView';
 import CoachingJobList from '../CoachingJobList/CoachingJobList';
+import Overview from '../Overview/Overview';
 
 import './App.css';
 import BottomNavBar from '../BottomNavBar/BottomNavBar';
