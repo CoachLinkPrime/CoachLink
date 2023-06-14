@@ -15,6 +15,10 @@ function HomeView() {
 		history.push('/gigs_avaliable');
 	};
 
+	const addGigs = () => {
+		history.push('/ineedacoach');
+	}
+
 	return (
 		<>
 			{/* How can we handle on clicks in this page?!? */}
@@ -28,7 +32,7 @@ function HomeView() {
 				<h4>Coaching Jobs</h4>
 				<p>Click here to find available shifts</p>
 			</div>
-			<div className='card'>
+			<div className='card' onClick={addGigs}>
 				<img
 					className='picture'
 					src='/images/snowboard_dudes.jpeg'
@@ -37,9 +41,7 @@ function HomeView() {
 				<h4>Looking for Coaches</h4>
 				<p>Click here to create a gig for industry professionals to apply</p>
 			</div>
-			<div>
-				<LogOutButton className='btn' />
-			</div>
+			
 		</>
 	);
 }

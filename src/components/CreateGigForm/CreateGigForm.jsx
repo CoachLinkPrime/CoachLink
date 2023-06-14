@@ -9,37 +9,48 @@ function CreateGigForm() {
 
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
+    const [timeOne, setTimeOne] = useState('');
+    const [timeTwo, setTimeTwo] = useState('');
     const [price, setPrice] = useState('');
     const [location, setLocation] = useState('');
+    const [type, setType] = useState('');
     const [level, setLevel] = useState('');
     const [years, setYears] = useState('');
     const [sport, setSport] = useState('');
     const [activity, setActivity] = useState('');
     const [description, setDescription] = useState('');
 
+    const coachLevel = (type + " " + level);
+    const time = (timeOne + '-' + timeTwo);
+
+    console.log(coachLevel);
+    console.log(time);
+
     const addGig = (event) => {
         event.preventDefault();
+        console.log('adding gig');
 
         dispatch({
-            type: 'SAGA/ADD_GIG',
+            type: 'POST_GIG',
             payload: {
                 title: title,
                 description: description,
-                date_posted: date,
+                date: date,
                 time: time,
-                coach_level: level,
-                year_of_experience: years,
+                coach_level: coachLevel,
+                years: years,
                 activity_type: activity,
                 ski_or_snow: sport,
                 location: location,
                 price: price
             }
         })
+        history.push('/user');
     }
 
-
-
+    const homeButton = () => {
+        history.push('/user');
+    }
 
     return(
        <>
@@ -73,8 +84,13 @@ function CreateGigForm() {
         <input
         placeholder='Time'
         type='time'
-        value={time}
-        onChange={(event) => setTime(event.target.value)}
+        value={timeOne}
+        onChange={(event) => setTimeOne(event.target.value)}
+        /> - 
+        <input
+        type='time'
+        value={timeTwo}
+        onChange={(event) => setTimeTwo(event.target.value)}
         />
        </div>
        <div>
@@ -83,7 +99,7 @@ function CreateGigForm() {
         </label>
         <input
         placeholder='Price'
-        type='text'
+        type='number'
         value={price}
         onChange={(event) => setPrice(event.target.value)}
         />
@@ -96,9 +112,9 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'instuctor'
+            value = 'Instuctor'
             name = 'type'
-            onChange={(event) => setLevel(event.target.value)}
+            onChange={(event) => setType(event.target.value)}
             /> 
         </div>
              <label>
@@ -108,6 +124,7 @@ function CreateGigForm() {
                 type = 'radio'
                 value = 'level 1'
                 name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
                 />
                  <label>
                     Level 2
@@ -116,6 +133,7 @@ function CreateGigForm() {
                 type = 'radio'
                 value = 'level 2'
                 name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
                 />
                  <label>
                     Level 3
@@ -124,6 +142,7 @@ function CreateGigForm() {
                 type = 'radio'
                 value = 'level 3'
                 name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
                 />
                  <label>
                     Level 4
@@ -132,6 +151,7 @@ function CreateGigForm() {
                 type = 'radio'
                 value = 'level 4'
                 name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
                 />
             </div>
         <div>
@@ -140,9 +160,9 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'coach'
+            value = 'Coach'
             name = 'type'
-            onChange={(event) => setLevel(event.target.value)}
+            onChange={(event) => setType(event.target.value)}
             />
             <div>
                 <label>
@@ -152,14 +172,16 @@ function CreateGigForm() {
                 type = 'radio'
                 value = 'level 100'
                 name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
                 />
                 <label>
-                    Level 2
+                    Level 200
                 </label>
                 <input
                 type = 'radio'
                 value = 'level 200'
                 name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
                 />
                 <label>
                     Level 300
@@ -168,6 +190,7 @@ function CreateGigForm() {
                 type = 'radio'
                 value = 'level 300'
                 name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
                 />
                 <label>
                     Level 400
@@ -176,6 +199,7 @@ function CreateGigForm() {
                 type = 'radio'
                 value = 'level 400'
                 name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
                 />
             </div>
             </div>
@@ -187,7 +211,7 @@ function CreateGigForm() {
             type = 'radio'
             value = 'uncertfied'
             name = 'type'
-            onChange={(event) => setLevel(event.target.value)}
+            onChange={(event) => setType(event.target.value)}
             />
             </div>
         </div>
@@ -241,7 +265,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'alpine'
+            value = 'Alpine'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)} 
             />
@@ -250,7 +274,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'slopestyle'
+            value = 'Slopestyle'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             />
@@ -259,7 +283,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'skier cross'
+            value = 'Skier cross'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             />
@@ -268,7 +292,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'halfpipe'
+            value = 'Halfpipe'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             />
@@ -290,7 +314,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'alpine'
+            value = 'Alpine'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             />
@@ -299,7 +323,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'boarder cross'
+            value = 'Boarder cross'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             />
@@ -308,7 +332,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'slopestyle'
+            value = 'Slopestyle'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             />
@@ -317,7 +341,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'halfpipe'
+            value = 'Halfpipe'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             />
@@ -337,7 +361,7 @@ function CreateGigForm() {
         </div>
 
         <div>
-            <button>Home</button>
+            <button onClick = {homeButton}>Home</button>
             <button onClick={addGig}>Publish</button>
         </div>
         </form>

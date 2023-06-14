@@ -22,7 +22,7 @@ import ExplinationPage from '../ExplinationPage/ExplinationPage';
 import HomeView from '../HomeView/HomeView';
 import CreateGigForm from '../CreateGigForm/CreateGigForm';
 import CoachingJobList from '../CoachingJobList/CoachingJobList';
-
+import Overview from '../Overview/Overview';
 import './App.css';
 import BottomNavBar from '../BottomNavBar/BottomNavBar';
 

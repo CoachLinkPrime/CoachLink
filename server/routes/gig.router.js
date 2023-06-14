@@ -17,7 +17,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
   pool.query(sqlQuery, sqlValues)
     .then((dbRes) => {
-      console.log('results from gig GET route:', dbRes.rows);
+      // console.log('results from gig GET route:', dbRes.rows);
       res.send(dbRes.rows);
     }).catch((dbErr) => {
       console.log('error with gig GET route:', dbErr);
@@ -34,7 +34,7 @@ router.get('/available', rejectUnauthenticated, (req, res) => {
   
   pool.query(sqlQuery)
     .then((dbRes) => {
-      console.log('GET results for available gigs:', dbRes.rows);
+      // console.log('GET results for available gigs:', dbRes.rows);
       res.send(dbRes.rows);
     }).catch((dbErr) => {
       console.log('error with GET gigs route:', dbErr);
@@ -43,7 +43,7 @@ router.get('/available', rejectUnauthenticated, (req, res) => {
 })
 
 router.post('/', rejectUnauthenticated, (req, res) => {
-  console.log('In posting', req.user.id);
+  // console.log('In posting', req.user.id);
   const userId = req.user.id
   const title = req.body.title
   const description = req.body.description
@@ -56,17 +56,20 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const location = req.body.location
   const price = req.body.price
 
-  const sqlValues = [userId, title, description, date, time, coach_level, years, activity_type, ski_or_snow, location, price]
+  // console.log('years', years);
+  // console.log('date', date);
 
-  const sqlQuery = `INSERT INTO "gig" ( "user_id", "title",  "description", "date_posted", 
+  const sqlValues = [userId, title, description, date, years, time, coach_level, activity_type, ski_or_snow, location, price]
+
+  const sqlQuery = `INSERT INTO "gig" ("user_id", "title",  "description", "date", 
   "year_of_experience", "time", "coach_level", 
-  "activity_type", "ski_or_snow", "location", "price", "status", "applied_status"),
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,);
+  "activity_type", "ski_or_snow", "location", "price")
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
   `
   
   pool.query(sqlQuery, sqlValues)
     .then(dbRes => {
-      console.log('added stats');
+      console.log('added gig');
       res.sendStatus(201);
     }).catch(dbErr => {
       console.log('Error conecting with DB', dbErr);
