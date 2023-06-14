@@ -3,6 +3,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './HomeView.css';
+import BottomNavBar from '../BottomNavBar/BottomNavBar';
 
 function HomeView() {
 	const history = useHistory();

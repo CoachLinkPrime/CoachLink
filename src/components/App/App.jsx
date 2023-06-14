@@ -7,8 +7,6 @@ import {
 } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-
-import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -25,6 +23,7 @@ import HomeView from '../HomeView/HomeView';
 import CoachingJobList from '../CoachingJobList/CoachingJobList';
 
 import './App.css';
+import BottomNavBar from '../BottomNavBar/BottomNavBar';
 
 function App() {
 	const dispatch = useDispatch();
@@ -38,7 +37,6 @@ function App() {
 	return (
 		<Router>
 			<div>
-				<Nav />
 				<Switch>
 					{/* Visiting localhost:3000 will redirect to localhost:3000/home */}
 					<Redirect exact from='/' to='/home' />
@@ -73,6 +71,14 @@ function App() {
 						path='/info'>
 						<InfoPage />
 					</ProtectedRoute>
+
+					<ProtectedRoute
+						// logged in shows Overview else shows LoginPage
+						exact
+						path='/overview'>
+						<Overview />
+					</ProtectedRoute>
+
 
 					<Route exact path='/login'>
 						{user.id ? (
@@ -125,6 +131,7 @@ function App() {
 					</Route>
 				</Switch>
 				<Footer />
+				<BottomNavBar />
 			</div>
 		</Router>
 	);
