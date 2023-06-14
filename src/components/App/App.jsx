@@ -20,11 +20,8 @@ import WelcomePage from '../WelcomePage/WelcomePage';
 import LegalPage from '../LegalPage/LegalPage';
 import ExplinationPage from '../ExplinationPage/ExplinationPage';
 import HomeView from '../HomeView/HomeView';
-<<<<<<< HEAD
 import CreateGigForm from '../CreateGigForm/CreateGigForm';
-=======
 import Overview from '../Overview/Overview';
->>>>>>> main
 
 import './App.css';
 import BottomNavBar from '../BottomNavBar/BottomNavBar';
