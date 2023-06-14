@@ -11,7 +11,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   let sqlQuery = `
     SELECT * FROM "gig"
-      WHERE "user_id"=($1);`;
+      WHERE "coach_user_id"=($1);`;
 
   let sqlValues = [req.user.id];
 
