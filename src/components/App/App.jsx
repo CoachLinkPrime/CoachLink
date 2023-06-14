@@ -20,7 +20,7 @@ import WelcomePage from '../WelcomePage/WelcomePage';
 import LegalPage from '../LegalPage/LegalPage';
 import ExplinationPage from '../ExplinationPage/ExplinationPage';
 import HomeView from '../HomeView/HomeView';
-import Overview from '../Overview/Overview';
+import CoachingJobList from '../CoachingJobList/CoachingJobList';
 
 import './App.css';
 import BottomNavBar from '../BottomNavBar/BottomNavBar';
@@ -102,16 +102,12 @@ function App() {
 						)}
 					</Route>
 
-					<Route exact path = '/welcome'>
-					
+					<Route exact path='/welcome'>
 						<WelcomePage />
-
 					</Route>
 
-					<Route exact path = '/legal'>
-
+					<Route exact path='/legal'>
 						<LegalPage />
-
 					</Route>
 
 					<Route exact path='/home'>
@@ -124,6 +120,10 @@ function App() {
 							<LandingPage />
 						)}
 					</Route>
+
+					<ProtectedRoute exact path='/gigs_avaliable'>
+						<CoachingJobList />
+					</ProtectedRoute>
 
 					{/* If none of the other routes matched, we will show a 404. */}
 					<Route>
