@@ -58,10 +58,10 @@ router.get('/upcoming', rejectUnauthenticated, (req, res) => {
 
   pool.query(sqlQuery, sqlValues)
     .then((dbRes) => {
-      console.log('results from past gigs GET route:', dbRes.rows);
+      console.log('Upcoming gigs GET route:', dbRes.rows);
       res.send(dbRes.rows);
     }).catch((dbErr) => {
-      console.log('error with past gigs GET route:', dbErr);
+      console.log('ERROR upcoming gigs GET route:', dbErr);
       res.sendStatus(500);
     })
 });
