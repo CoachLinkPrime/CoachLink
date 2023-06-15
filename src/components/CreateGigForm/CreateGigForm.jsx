@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Container } from '@mui/material';
+import { Container, Input } from '@mui/material';
 
 function CreateGigForm() {
 
@@ -21,7 +21,11 @@ function CreateGigForm() {
     const [activity, setActivity] = useState('');
     const [description, setDescription] = useState('');
 
+
+    // This will create the coach level combining the type and level of coach
     const coachLevel = (type + " " + level);
+
+    // This create the time the clubs need
     const time = (timeOne + '-' + timeTwo);
 
     // console.log(coachLevel);
@@ -30,6 +34,8 @@ function CreateGigForm() {
     const addGig = (event) => {
         event.preventDefault();
         console.log('adding gig');
+
+        // calling to the saga to post a gig
 
         dispatch({
             type: 'POST_GIG',
@@ -102,9 +108,9 @@ function CreateGigForm() {
         onChange={(event) => setPrice(event.target.value)}
         />
        </div>
-       <div>
-       <div>
-        <div>
+       <table>
+        <tr>
+            <td><div>
             <label>
                 Instuctor
             </label>
@@ -114,45 +120,8 @@ function CreateGigForm() {
             name = 'type'
             onChange={(event) => setType(event.target.value)}
             /> 
-        </div>
-             <label>
-                    Level 1
-                </label>
-                <input
-                type = 'radio'
-                value = 'level 1'
-                name = 'level'
-                onChange={(event) => setLevel(event.target.value)}
-                />
-                 <label>
-                    Level 2
-                </label>
-                <input
-                type = 'radio'
-                value = 'level 2'
-                name = 'level'
-                onChange={(event) => setLevel(event.target.value)}
-                />
-                 <label>
-                    Level 3
-                </label>
-                <input
-                type = 'radio'
-                value = 'level 3'
-                name = 'level'
-                onChange={(event) => setLevel(event.target.value)}
-                />
-                 <label>
-                    Level 4
-                </label>
-                <input
-                type = 'radio'
-                value = 'level 4'
-                name = 'level'
-                onChange={(event) => setLevel(event.target.value)}
-                />
-            </div>
-        <div>
+        </div></td>
+        <td><div>
             <label>
                 Coach
             </label>
@@ -162,7 +131,22 @@ function CreateGigForm() {
             name = 'type'
             onChange={(event) => setType(event.target.value)}
             />
-            <div>
+            </div></td>
+        </tr>
+        <tr> 
+            <td><div>
+             <label>
+                    Level 1
+                </label>
+                <input
+                type = 'radio'
+                value = 'level 1'
+                name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
+                />
+                </div>
+                </td>
+                <td><div>
                 <label>
                     Level 100
                 </label>
@@ -172,6 +156,21 @@ function CreateGigForm() {
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                </div></td>
+                </tr>
+                <tr>
+                    <td><div>
+                 <label>
+                    Level 2
+                </label>
+                <input
+                type = 'radio'
+                value = 'level 2'
+                name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
+                />
+                </div></td>
+                <td> <div>
                 <label>
                     Level 200
                 </label>
@@ -181,6 +180,21 @@ function CreateGigForm() {
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                </div></td>
+                </tr>
+                <tr>
+                    <td><div>
+                 <label>
+                    Level 3
+                </label>
+                <input
+                type = 'radio'
+                value = 'level 3'
+                name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
+                />
+                </div></td>
+                <td><div>
                 <label>
                     Level 300
                 </label>
@@ -190,6 +204,22 @@ function CreateGigForm() {
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                </div></td>
+                </tr>
+                <tr>
+                    <td><div>
+                 <label>
+                    Level 4
+                </label>
+                <input
+                type = 'radio'
+                value = 'level 4'
+                name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
+                />
+                </div></td>
+                <td> 
+                <div>
                 <label>
                     Level 400
                 </label>
@@ -199,8 +229,10 @@ function CreateGigForm() {
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
-            </div>
-            </div>
+                </div></td>
+                </tr>
+       </table>
+      
             <div>
             <label>
                 Uncertified
@@ -212,7 +244,7 @@ function CreateGigForm() {
             onChange={(event) => setType(event.target.value)}
             />
             </div>
-        </div>
+        
         <div>
             <label>
                 Years of experience:
@@ -248,7 +280,9 @@ function CreateGigForm() {
             </select>
        </div>
        <div>
-        <label>
+       <table>
+        <tr>
+            <td><label>
             Ski
         </label>
         <input 
@@ -256,48 +290,8 @@ function CreateGigForm() {
             value = 'ski'
             name = 'sport' 
             onChange={(event) => setSport(event.target.value)}
-            />
-        <div>
-            <label>
-                Alpine
-            </label>
-            <input 
-            type = 'radio'
-            value = 'Alpine'
-            name = 'activity'
-            onChange={(event) => setActivity(event.target.value)} 
-            />
-            <label>
-                Slopestyle
-            </label>
-            <input 
-            type = 'radio'
-            value = 'Slopestyle'
-            name = 'activity'
-            onChange={(event) => setActivity(event.target.value)}  
-            />
-            <label>
-                Skier Cross
-            </label>
-            <input 
-            type = 'radio'
-            value = 'Skier cross'
-            name = 'activity'
-            onChange={(event) => setActivity(event.target.value)}  
-            />
-            <label>
-                Halfpipe
-            </label>
-            <input 
-            type = 'radio'
-            value = 'Halfpipe'
-            name = 'activity'
-            onChange={(event) => setActivity(event.target.value)}  
-            />
-        </div>
-
-        
-        <label>
+            /></td>
+            <td> <label>
             Snowboard
         </label>
         <input 
@@ -305,9 +299,19 @@ function CreateGigForm() {
             value = 'snowboard'
             name = 'sport' 
             onChange={(event) => setSport(event.target.value)}
-            />
-        <div>
-            <label>
+            /></td>
+        </tr>
+        <tr>
+            <td><label>
+                Alpine
+            </label>
+            <input 
+            type = 'radio'
+            value = 'Alpine'
+            name = 'activity'
+            onChange={(event) => setActivity(event.target.value)} 
+            /></td>
+            <td><div><label>
                 Alpine
             </label>
             <input 
@@ -315,17 +319,10 @@ function CreateGigForm() {
             value = 'Alpine'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            />
-            <label>
-                Boarder Cross
-            </label>
-            <input 
-            type = 'radio'
-            value = 'Boarder cross'
-            name = 'activity'
-            onChange={(event) => setActivity(event.target.value)}  
-            />
-            <label>
+            /></div></td>
+        </tr>
+        <tr>
+            <td><label>
                 Slopestyle
             </label>
             <input 
@@ -333,8 +330,39 @@ function CreateGigForm() {
             value = 'Slopestyle'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            />
-             <label>
+            /></td>
+            <td><label>
+                Boarder Cross
+            </label>
+            <input 
+            type = 'radio'
+            value = 'Boarder cross'
+            name = 'activity'
+            onChange={(event) => setActivity(event.target.value)}  
+            /></td>
+        </tr>
+        <tr>
+            <td><label>
+                Slopestyle
+            </label>
+            <input 
+            type = 'radio'
+            value = 'Slopestyle'
+            name = 'activity'
+            onChange={(event) => setActivity(event.target.value)}  
+            /></td>
+            <td><label>
+                Skier Cross
+            </label>
+            <input 
+            type = 'radio'
+            value = 'Skier cross'
+            name = 'activity'
+            onChange={(event) => setActivity(event.target.value)}  
+            /></td>
+        </tr>
+        <tr>
+            <td><label>
                 Halfpipe
             </label>
             <input 
@@ -342,20 +370,30 @@ function CreateGigForm() {
             value = 'Halfpipe'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            />
-        </div>
-
-        </div>
-
+            /></td>
+            <td> <label>
+                Halfpipe
+            </label>
+            <input 
+            type = 'radio'
+            value = 'Halfpipe'
+            name = 'activity'
+            onChange={(event) => setActivity(event.target.value)}  
+            /></td>
+        </tr>
+       </table>
+       </div>
         <div>
             <label>
-                Description
+                Description: 
             </label>
-            <input
-            type='textbox'
+            <textarea
+            rows='10'
+            cols='50'
             value={description}
             onChange={(event) => setDescription(event.target.value)}
-            />
+            >
+            </textarea>
         </div>
 
         <div>
