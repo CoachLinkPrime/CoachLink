@@ -45,7 +45,7 @@ CREATE TABLE "user" (
     "password" VARCHAR (100) NOT NULL,
     "name" VARCHAR (100),
     "phone_number" VARCHAR (10),
-    "email" VARCHAR (100),
+    "email" VARCHAR (100) NOT NULL,
     "description" VARCHAR (1200),
     "legal_status" BOOLEAN DEFAULT FALSE,
     "date_accepted" VARCHAR

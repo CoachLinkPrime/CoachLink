@@ -45,6 +45,27 @@ router.get('/past', rejectUnauthenticated, (req, res) => {
     })
 });
 
+
+// GET route for upcoming gigs based on the logged-in user's id
+router.get('/upcoming', rejectUnauthenticated, (req, res) => {
+  // GET route code here
+  let sqlQuery = `
+    SELECT * FROM "gig"
+      WHERE "coach_user_id"=$1
+      AND "status"=true;`;
+
+  let sqlValues = [req.user.id];
+
+  pool.query(sqlQuery, sqlValues)
+    .then((dbRes) => {
+      console.log('Upcoming gigs GET route:', dbRes.rows);
+      res.send(dbRes.rows);
+    }).catch((dbErr) => {
+      console.log('ERROR upcoming gigs GET route:', dbErr);
+      res.sendStatus(500);
+    })
+});
+
 // this GET route retrieves all available gigs for user to 
 // check and then apply as appropriate: 
 router.get('/available', rejectUnauthenticated, (req, res) => {
