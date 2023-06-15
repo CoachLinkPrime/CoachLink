@@ -48,7 +48,7 @@ CREATE TABLE "user" (
     "email" VARCHAR (100) NOT NULL,
     "description" VARCHAR (1200),
     "legal_status" BOOLEAN DEFAULT FALSE,
-    "date_accepted" VARCHAR
+    "date_accepted" VARCHAR,
 );
 
 CREATE TABLE "gig" (
@@ -57,13 +57,14 @@ CREATE TABLE "gig" (
     "coach_user_id" INTEGER,
     "title" VARCHAR (80),
     "description" VARCHAR (1200),
-    "date" DATE,
+    "date_for_gig" DATE,
     "date_applied" DATE,
+    "date_published" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "year_of_experience" INTEGER,
-    "time" VARCHAR (80),
+    "time_for_gig" VARCHAR (80),
     "coach_level" VARCHAR (80),
     "activity_type" activity_type_enum,
-    "ski_or_snow" ski_or_snow_enum,,
+    "ski_or_snow" ski_or_snow_enum,
     "location" location_enum,
     "price" INTEGER,
     "status" BOOLEAN,
