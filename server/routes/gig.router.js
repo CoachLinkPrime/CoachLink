@@ -51,7 +51,7 @@ router.get('/upcoming', rejectUnauthenticated, (req, res) => {
   // GET route code here
   let sqlQuery = `
     SELECT * FROM "gig"
-      WHERE "coach_user_id"=($1)
+      WHERE "coach_user_id"=$1
       AND "status"=true;`;
 
   let sqlValues = [req.user.id];

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function Overview() {
     const dispatch = useDispatch();
     const pastGigs = useSelector((store) => store.pastGigs);
+    const upcomingGigs = useSelector((store) => store.upcomingGigs);
 
     // if there are no completed gigs in the store [], then 
     // dispatch a call to fetch them from the database 
@@ -13,17 +14,26 @@ function Overview() {
                 type: 'FETCH_COMPLETED_GIGS'
             });
         }
-    }, [dispatch]);
+        if (!upcomingGigs.length) {
+            dispatch({
+              type: 'FETCH_UPCOMING_GIGS'
+            });
+          }
+        }, [dispatch, pastGigs.length, upcomingGigs.length]);
 
  return (
     <div className= 'overview'>
         <h1>Overview</h1>
         <h2>Upcoming Gigs</h2>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <ul>
+            {upcomingGigs.map(({ id, title, date_applied }) => {
+                return (
+                    <li key={id}>
+                        <p>{title}, {date_applied}</p>
+                    </li>
+                )
+            })}
+        </ul>
         <br />
         <br />
         <h2>Completed Gigs</h2>

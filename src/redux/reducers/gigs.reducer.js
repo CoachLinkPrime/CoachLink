@@ -17,3 +17,13 @@ export const getCompletedGigs = (state=[], action) => {
 		return state;
 	}
 }
+
+// this stores the upcoming gigs (based on user's id)
+export const upcomingGigsReducer = (state = [], action) => {
+	switch (action.type) {
+	  case 'SET_UPCOMING_GIGS':
+		return action.payload;
+	  default:
+		return state;
+	}
+  };

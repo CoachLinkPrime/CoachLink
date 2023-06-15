@@ -21,9 +21,20 @@ function* fetchCompletedGigs() {
 	}
 }
 
+// call to database for upcoming gigs based on user's id
+function* fetchUpcomingGigs() {
+	try {
+		const response = yield axios.get('/api/gig/upcoming');
+		yield put({ type: 'SET_UPCOMING_GIGS', payload: response.data });
+	} catch {
+		console.log('error with fetchUpcomingGigs saga');
+	}
+}
+
 function* gigsSaga() {
 	yield takeLatest('FETCH_GIGS', fetchGigs),
-	yield takeLatest('FETCH_COMPLETED_GIGS', fetchCompletedGigs);
+	yield takeLatest('FETCH_COMPLETED_GIGS', fetchCompletedGigs),
+	yield takeLatest('FETCH_UPCOMING_GIGS', fetchUpcomingGigs);
 }
 
 export default gigsSaga;
