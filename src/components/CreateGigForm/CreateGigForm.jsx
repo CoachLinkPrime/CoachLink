@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Container } from '@mui/material';
+import { Container, Input } from '@mui/material';
 
 function CreateGigForm() {
 
