@@ -57,7 +57,7 @@ CREATE TABLE "gig" (
     "coach_user_id" INTEGER,
     "title" VARCHAR (80),
     "description" VARCHAR (1200),
-    "date_for_gig" DATE,
+    "date_for_gig" VARCHAR(80),
     "date_applied" DATE,
     "date_published" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "year_of_experience" INTEGER,
