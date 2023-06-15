@@ -33,7 +33,9 @@ router.get('/past', rejectUnauthenticated, (req, res) => {
 	let sqlQuery = `
     SELECT * FROM "gig"
       WHERE "coach_user_id"=($1)
-      AND "status"=false;`;
+        AND "status"=false
+      OR "user_id"=($1)
+        AND "status"=false;`;
 
 	let sqlValues = [req.user.id];
 
