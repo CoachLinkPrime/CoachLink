@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 function CoachingJobCard({ gig }) {
-	console.log(gig.date_for_gig);
+	console.log(gig);
 
 
 	return (
