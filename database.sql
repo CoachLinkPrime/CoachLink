@@ -41,12 +41,12 @@ CREATE TYPE ski_or_snow_enum AS ENUM ('ski', 'snowboard');
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "username" VARCHAR (90) UNIQUE NOT NULL,
     "password" VARCHAR (100) NOT NULL,
     "name" VARCHAR (100),
     "phone_number" VARCHAR (10),
     "email" VARCHAR (100) NOT NULL,
-    "description" VARCHAR (1200),
+    "description" VARCHAR (1300),
     "legal_status" BOOLEAN DEFAULT FALSE,
     "date_accepted" VARCHAR
 );
@@ -76,6 +76,7 @@ CREATE TABLE "gig" (
 -- Dummy data for user
 INSERT INTO "user" ("username", "password", "name", "phone_number", "email", "description", "legal_status", "date_accepted")
 VALUES
+
     ('john123', 'password123', 'John Doe', '1234567890', 'john@example.com', 'Experienced coach', true, '2023-01-01'),
     ('jane456', 'pass456', 'Jane Smith', '9876543210', 'jane@example.com', 'Certified instructor', true, '2023-02-15'),
     ('sam789', 'pass789', 'Sam Johnson', '5555555555', 'sam@example.com', 'Freestyle specialist', true, '2023-03-10');
