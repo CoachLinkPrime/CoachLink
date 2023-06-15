@@ -1,10 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 function OverviewCard({ id, title, date_for_gig, convertDateFormat }) {
+
+  const dispatch = useDispatch();
 
   const handleDelete = (id) => {
     dispatch({
