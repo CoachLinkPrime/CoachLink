@@ -312,7 +312,7 @@ function CreateGigForm() {
             onChange={(event) => setActivity(event.target.value)} 
             /></td>
             <td><div><label>
-                Alpine
+                Alpine (PGS/PSL)
             </label>
             <input 
             type = 'radio'
@@ -343,20 +343,20 @@ function CreateGigForm() {
         </tr>
         <tr>
             <td><label>
+                Skier Cross
+            </label>
+            <input 
+            type = 'radio'
+            value = 'Skier Cross'
+            name = 'activity'
+            onChange={(event) => setActivity(event.target.value)}  
+            /></td>
+            <td><label>
                 Slopestyle
             </label>
             <input 
             type = 'radio'
             value = 'Slopestyle'
-            name = 'activity'
-            onChange={(event) => setActivity(event.target.value)}  
-            /></td>
-            <td><label>
-                Skier Cross
-            </label>
-            <input 
-            type = 'radio'
-            value = 'Skier cross'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             /></td>

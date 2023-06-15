@@ -102,8 +102,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
   const sqlValues = [userId, title, description, date, years, time, coach_level, activity_type, ski_or_snow, location, price]
 
-  const sqlQuery = `INSERT INTO "gig" ("user_id", "title",  "description", "date", 
-  "year_of_experience", "time", "coach_level", 
+  const sqlQuery = `INSERT INTO "gig" ("user_id", "title",  "description", "date_for_gig", 
+  "year_of_experience", "time_for_gig", "coach_level", 
   "activity_type", "ski_or_snow", "location", "price")
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
   `
