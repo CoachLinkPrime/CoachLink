@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Container, Input } from '@mui/material';
+import { Container, FilledInput, InputLabel, Select, MenuItem, RadioGroup, FormControlLabel, Radio, InputAdornment } from '@mui/material';
 
 function CreateGigForm() {
 
@@ -61,49 +61,57 @@ function CreateGigForm() {
        <h3>Lets get started!</h3>
        <form>
        <div>
-        <label>
+        <InputLabel>
             Title:
-        </label>
-        <input
+        </InputLabel>
+        <div>
+        <FilledInput
         placeholder='Title'
+        size='small'
         type='text'
         value={title}
         onChange={(event) => setTitle(event.target.value)}
         />
+        </div>
        </div>
        <div>
-        <label>
+        <InputLabel>
             Date:
-        </label>
-        <input
+        </InputLabel>
+        <FilledInput
+        size='small'
         type='date'
         value={date}
         onChange={(event) => setDate(event.target.value)}
         />
        </div>
        <div>
-        <label>
+        <InputLabel>
             Time:
-        </label>
-        <input
+        </InputLabel>
+        <FilledInput
         placeholder='Time'
         type='time'
+        size='small'
         value={timeOne}
         onChange={(event) => setTimeOne(event.target.value)}
         /> - 
-        <input
+        <FilledInput
         type='time'
+        size='small'
         value={timeTwo}
         onChange={(event) => setTimeTwo(event.target.value)}
         />
        </div>
        <div>
-        <label>
+        <InputLabel>
             Price:
-        </label>
-        <input
+        </InputLabel>
+        <FilledInput
         placeholder='Price'
+        size='small'
         type='number'
+        startAdornment={<InputAdornment position='start'>$</InputAdornment>}
         value={price}
         onChange={(event) => setPrice(event.target.value)}
         />
@@ -114,9 +122,10 @@ function CreateGigForm() {
             <label>
                 Instuctor
             </label>
-            <input 
-            type = 'radio'
+            <input
+            type = 'radio'       
             value = 'Instuctor'
+            label='Instuctor'
             name = 'type'
             onChange={(event) => setType(event.target.value)}
             /> 
@@ -125,7 +134,7 @@ function CreateGigForm() {
             <label>
                 Coach
             </label>
-            <input 
+            <input
             type = 'radio'
             value = 'Coach'
             name = 'type'
@@ -232,7 +241,6 @@ function CreateGigForm() {
                 </div></td>
                 </tr>
        </table>
-      
             <div>
             <label>
                 Uncertified
@@ -246,38 +254,37 @@ function CreateGigForm() {
             </div>
         
         <div>
-            <label>
+            <InputLabel>
                 Years of experience:
-            </label>
-            <input
-            playholder='Years of Experience'
+            </InputLabel>
+            <FilledInput
+            size='small'
             type='number'
             value={years}
             onChange={(event) => setYears(event.target.value)}
             />
         </div>
         <div>
-            <label>
+            <InputLabel id='location'>
                 Location:
-            </label>
-            <select id = 'location' onChange={(event) => setLocation(event.target.value)}>
-                <option value=''>--Where is your club?--</option>
-                <option value='Lutsen Mountains'>Lutsen Mountains</option>
-                <option value='Spirit Mountain'>Spirit Mountain</option>
-                <option value='Giants Ridge'>Giants Ridge</option>
-                <option value='Afton Alps'>Afton Alps</option>
-                <option value='Mt. Kato'>Mt. Kato</option>
-                <option value='Welch Village'>Welch Village</option>
-                <option value='Powder Ridge'>Powder Ridge</option>
-                <option value='Wild Mountain'>Wild Mountain</option>
-                <option value='Andes Tower Hills'>Andes Tower Hills</option>
-                <option value='Buena Vista'>Buena Vista</option>
-                <option value='Hyland Hills'>Hyland Hills</option>
-                <option value='Detroit Mountain'>Detroit Mountain</option>
-                <option value='Buck Hill Ski Area'>Buck Hill Ski Area</option>
-                <option value='Trollhaugen'>Trollhaugen</option>
-                <option value='Granite Peak'>Granite Peak</option>
-            </select>
+            </InputLabel>
+            <Select labelId='location' label= "--Where is your club--" onChange={(event) => setLocation(event.target.value)}>
+                <MenuItem value='Lutsen Mountains'>Lutsen Mountains</MenuItem>
+                <MenuItem value='Spirit Mountain'>Spirit Mountain</MenuItem>
+                <MenuItem value='Giants Ridge'>Giants Ridge</MenuItem>
+                <MenuItem value='Afton Alps'>Afton Alps</MenuItem>
+                <MenuItem value='Mt. Kato'>Mt. Kato</MenuItem>
+                <MenuItem value='Welch Village'>Welch Village</MenuItem>
+                <MenuItem value='Powder Ridge'>Powder Ridge</MenuItem>
+                <MenuItem value='Wild Mountain'>Wild Mountain</MenuItem>
+                <MenuItem value='Andes Tower Hills'>Andes Tower Hills</MenuItem>
+                <MenuItem value='Buena Vista'>Buena Vista</MenuItem>
+                <MenuItem value='Hyland Hills'>Hyland Hills</MenuItem>
+                <MenuItem value='Detroit Mountain'>Detroit Mountain</MenuItem>
+                <MenuItem value='Buck Hill Ski Area'>Buck Hill Ski Area</MenuItem>
+                <MenuItem value='Trollhaugen'>Trollhaugen</MenuItem>
+                <MenuItem value='Granite Peak'>Granite Peak</MenuItem>
+            </Select>  
        </div>
        <div>
        <table>
@@ -347,7 +354,7 @@ function CreateGigForm() {
             </label>
             <input 
             type = 'radio'
-            value = 'Skier Cross'
+            value = 'Skier cross'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
             /></td>
