@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
+import { Container } from '@mui/material';
 
 function CreateGigForm() {
 
@@ -23,8 +24,8 @@ function CreateGigForm() {
     const coachLevel = (type + " " + level);
     const time = (timeOne + '-' + timeTwo);
 
-    console.log(coachLevel);
-    console.log(time);
+    // console.log(coachLevel);
+    // console.log(time);
 
     const addGig = (event) => {
         event.preventDefault();
@@ -48,12 +49,9 @@ function CreateGigForm() {
         history.push('/user');
     }
 
-    const homeButton = () => {
-        history.push('/user');
-    }
-
     return(
        <>
+       <Container>
        <h3>Lets get started!</h3>
        <form>
        <div>
@@ -361,11 +359,10 @@ function CreateGigForm() {
         </div>
 
         <div>
-            <button onClick = {homeButton}>Home</button>
             <button onClick={addGig}>Publish</button>
         </div>
         </form>
-
+        </Container>
        </> 
     )
 
