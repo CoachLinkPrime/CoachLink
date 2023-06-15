@@ -13,13 +13,13 @@ function Overview() {
             dispatch({
                 type: 'FETCH_COMPLETED_GIGS'
             });
-        }
+        };
         if (!upcomingGigs.length) {
             dispatch({
               type: 'FETCH_UPCOMING_GIGS'
             });
           }
-        }, [dispatch, pastGigs.length, upcomingGigs.length]);
+        }, [dispatch]);
 
     // need to convert the DB format of date to something more readable:
     function convertDateFormat(date) {
@@ -37,7 +37,7 @@ function Overview() {
             {upcomingGigs.map(({ id, title, date_applied }) => {
                 return (
                     <li key={id}>
-                        <p>{title}, {date_applied}</p>
+                        <p>{title}, {convertDateFormat(date_applied)}</p>
                     </li>
                 )
             })}
