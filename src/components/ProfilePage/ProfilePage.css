@@ -1,0 +1,8 @@
+
+  .data-flex{
+    display: flex;
+  }
+  .coach-table {
+    width: 100%;
+    border-collapse: collapse;
+  }

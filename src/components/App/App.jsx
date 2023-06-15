@@ -25,6 +25,7 @@ import Overview from '../Overview/Overview';
 
 import './App.css';
 import BottomNavBar from '../BottomNavBar/BottomNavBar';
+import ProfilePage from '../ProfilePage/ProfilePage';
 
 function App() {
 	const dispatch = useDispatch();
@@ -79,7 +80,13 @@ function App() {
 						path='/overview'>
 						<Overview />
 					</ProtectedRoute>
-
+					<ProtectedRoute
+						// logged in shows InfoPage else shows LoginPage
+						exact
+						path="/profile"
+					>
+						<ProfilePage />
+					</ProtectedRoute>
 
 					<Route exact path='/login'>
 						{user.id ? (
