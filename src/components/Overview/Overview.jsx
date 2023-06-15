@@ -34,10 +34,10 @@ function Overview() {
         <h1>Overview</h1>
         <h2>Upcoming Gigs</h2>
         <ul>
-            {upcomingGigs.map(({ id, title, date_applied }) => {
+            {upcomingGigs.map(({ id, title, date_for_gig }) => {
                 return (
                     <li key={id}>
-                        <p>{title}, {convertDateFormat(date_applied)}</p>
+                        <p>{title}, {convertDateFormat(date_for_gig)}</p>
                     </li>
                 )
             })}
@@ -46,10 +46,10 @@ function Overview() {
         <br />
         <h2>Completed Gigs</h2>
         <ul>
-            {pastGigs.map(({ id, title, date_applied }) => {
+            {pastGigs.map(({ id, title, date_for_gig }) => {
                 return (
                     <li key={id}>
-                        <p>{title}, {convertDateFormat(date_applied)}</p>
+                        <p>{title}, {convertDateFormat(date_for_gig)}</p>
                     </li>
                 )
             })}
