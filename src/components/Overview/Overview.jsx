@@ -21,6 +21,14 @@ function Overview() {
           }
         }, [dispatch, pastGigs.length, upcomingGigs.length]);
 
+    // need to convert the DB format of date to something more readable:
+    function convertDateFormat(date) {
+        // first convert the date string to an object
+        const dateObj = new Date(date);
+        // then can convert that to differently formatted date string with JavaScript toDateString():
+        return dateObj.toDateString();
+    }
+
  return (
     <div className= 'overview'>
         <h1>Overview</h1>
@@ -41,7 +49,7 @@ function Overview() {
             {pastGigs.map(({ id, title, date_applied }) => {
                 return (
                     <li key={id}>
-                        <p>{title}, {date_applied}</p>
+                        <p>{title}, {convertDateFormat(date_applied)}</p>
                     </li>
                 )
             })}

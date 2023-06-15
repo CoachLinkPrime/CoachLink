@@ -31,10 +31,22 @@ function* fetchUpcomingGigs() {
 	}
 }
 
+function* postGigs(action) {
+    try{
+        const dbResponse = yield axios.post('/api/gig', action.payload)
+        console.log ('got the req', action.payload);
+
+        yield put({type: 'SAGA/FETCH_GIGS'})
+    } catch {
+        console.log('error in posting');
+    }
+}
+
 function* gigsSaga() {
 	yield takeLatest('FETCH_GIGS', fetchGigs),
 	yield takeLatest('FETCH_COMPLETED_GIGS', fetchCompletedGigs),
-	yield takeLatest('FETCH_UPCOMING_GIGS', fetchUpcomingGigs);
+	yield takeLatest('FETCH_UPCOMING_GIGS', fetchUpcomingGigs),
+	yield takeLatest('POST_GIG', postGigs);
 }
 
 export default gigsSaga;

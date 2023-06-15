@@ -20,6 +20,7 @@ import WelcomePage from '../WelcomePage/WelcomePage';
 import LegalPage from '../LegalPage/LegalPage';
 import ExplinationPage from '../ExplinationPage/ExplinationPage';
 import HomeView from '../HomeView/HomeView';
+import CreateGigForm from '../CreateGigForm/CreateGigForm';
 import CoachingJobList from '../CoachingJobList/CoachingJobList';
 import Overview from '../Overview/Overview';
 
@@ -71,6 +72,11 @@ function App() {
 						exact
 						path='/info'>
 						<InfoPage />
+					</ProtectedRoute>
+
+					<ProtectedRoute exact path = '/ineedacoach'>
+
+						<CreateGigForm />
 					</ProtectedRoute>
 
 					<ProtectedRoute
