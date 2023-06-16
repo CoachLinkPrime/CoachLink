@@ -42,7 +42,7 @@ router.get('/past', rejectUnauthenticated, (req, res) => {
 	pool
 		.query(sqlQuery, sqlValues)
 		.then((dbRes) => {
-			console.log('results from past gigs GET route:', dbRes.rows);
+			// console.log('results from past gigs GET route:', dbRes.rows);
 			res.send(dbRes.rows);
 		})
 		.catch((dbErr) => {
@@ -64,7 +64,7 @@ router.get('/upcoming', rejectUnauthenticated, (req, res) => {
 	pool
 		.query(sqlQuery, sqlValues)
 		.then((dbRes) => {
-			console.log('Upcoming gigs GET route:', dbRes.rows);
+			// console.log('Upcoming gigs GET route:', dbRes.rows);
 			res.send(dbRes.rows);
 		})
 		.catch((dbErr) => {
@@ -153,8 +153,17 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 		WHERE "id"=$1
 		AND "user_id"=$2;`;
 	let sqlValues = [gigIdToDelete, userId];
-
-	console.log('This is what you will be deleting from the DB!:', sqlQuery, sqlValues);
+	
+	pool
+	.query(sqlQuery, sqlValues)
+	.then((dbRes) => {
+		console.log('Entered Delete route successfully');
+		// res.send(200);
+	})
+	.catch((dbErr) => {
+		console.log('error with Delete route:', dbErr);
+		res.sendStatus(500);
+	});
 })
 
 module.exports = router;

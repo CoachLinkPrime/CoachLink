@@ -10,7 +10,6 @@ function OverviewCard({ id, title, date_for_gig, convertDateFormat }) {
   const dispatch = useDispatch();
 
   const handleDelete = (gigID) => {
-    console.log('Delete this gig:', gigID);
     dispatch({
       type: 'DELETE_GIG',
       payload: gigID
