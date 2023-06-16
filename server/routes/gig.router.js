@@ -78,7 +78,9 @@ router.get('/upcoming', rejectUnauthenticated, (req, res) => {
 router.get('/available', rejectUnauthenticated, (req, res) => {
 	let sqlQuery = `
   SELECT * FROM "gig"
-    WHERE "status"=true;`;
+    WHERE "status"=true
+		AND "coach_user_id" is null
+		`;
 
 	pool
 		.query(sqlQuery)
@@ -160,12 +162,33 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 		.query(sqlQuery, sqlValues)
 		.then((dbRes) => {
 			// console.log('Entered Delete route successfully');
-			res.send(200);
+			res.sendStatus(200);
 		})
 		.catch((dbErr) => {
 			console.log('error with Delete route:', dbErr);
 			res.sendStatus(500);
 		});
-})
+});
+
+router.put('/updateGig', rejectUnauthenticated, (req, res) => {
+	let gigID = req.body.gigID;
+	let userID = req.user.id;
+
+	let sqlQuery = `
+	UPDATE "gig"
+	SET coach_user_id = $1
+	WHERE id = $2
+	`;
+
+	pool
+		.query(sqlQuery, [userID, gigID])
+		.then((dbRes) => {
+			res.sendStatus(200);
+		})
+		.catch((dbErr) => {
+			console.log(dbErr);
+			res.sendStatus(500);
+		});
+});
 
 module.exports = router;

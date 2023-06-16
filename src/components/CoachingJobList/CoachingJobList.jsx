@@ -17,9 +17,9 @@ function CoachingJobList() {
 		<>
 			<h1>Avaliable Gigs</h1>
 			<div className='cardContainer'>
-			{gigs.map((gig) => {
+			{gigs.map((gig, index) => {
 					return (
-						<CoachingJobCard gig={gig}/>
+						<CoachingJobCard key={index} gig={gig}/>
 					)
 				})}
 			</div>

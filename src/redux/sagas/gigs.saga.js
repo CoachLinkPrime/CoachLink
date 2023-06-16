@@ -1,3 +1,4 @@
+import { accordionSummaryClasses } from '@mui/material';
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
@@ -32,32 +33,42 @@ function* fetchUpcomingGigs() {
 }
 
 function* postGigs(action) {
-    try{
-        const dbResponse = yield axios.post('/api/gig', action.payload)
-        console.log ('got the req', action.payload);
+	try {
+		const dbResponse = yield axios.post('/api/gig', action.payload);
+		console.log('got the req', action.payload);
 
-        yield put({type: 'SAGA/FETCH_GIGS'})
-    } catch {
-        console.log('error in posting');
-    }
+		yield put({ type: 'SAGA/FETCH_GIGS' });
+	} catch {
+		console.log('error in posting');
+	}
 }
 
 function* deleteGig(action) {
-	try{
+	try {
 		console.log('In saga deleteGig, got the request:', action.payload);
-		yield axios.delete(`api/gig/${action.payload}`)
-		yield put ({type: 'FETCH_UPCOMING_GIGS'})
-} catch {
-	console.log('Could not connect with server in deleteGig in saga');
+		yield axios.delete(`api/gig/${action.payload}`);
+		yield put({ type: 'FETCH_UPCOMING_GIGS' });
+	} catch {
+		console.log('Could not connect with server in deleteGig in saga');
+	}
 }
+
+function* updateGigWithCoach(action) {
+	try {
+		yield axios.put(`api/gig/updateGig`, action.payload);
+		yield put({ type: 'FETCH_GIGS' });
+	} catch {
+		console.log('you are actually kinda nice');
+	}
 }
 
 function* gigsSaga() {
 	yield takeLatest('FETCH_GIGS', fetchGigs),
-	yield takeLatest('FETCH_COMPLETED_GIGS', fetchCompletedGigs),
-	yield takeLatest('FETCH_UPCOMING_GIGS', fetchUpcomingGigs),
-	yield takeLatest('POST_GIG', postGigs);
+		yield takeLatest('FETCH_COMPLETED_GIGS', fetchCompletedGigs),
+		yield takeLatest('FETCH_UPCOMING_GIGS', fetchUpcomingGigs),
+		yield takeLatest('POST_GIG', postGigs);
 	yield takeLatest('DELETE_GIG', deleteGig);
+	yield takeLatest('UPDATE_GIG_WITH_COACH', updateGigWithCoach);
 }
 
 export default gigsSaga;
