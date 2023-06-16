@@ -42,11 +42,22 @@ function* postGigs(action) {
     }
 }
 
+function* deleteGig(action) {
+	try{
+		console.log('In saga deleteGig, got the request:', action.payload);
+		yield axios.delete(`api/gig/${action.payload}`)
+		yield put ({type: 'FETCH_UPCOMING_GIGS'})
+} catch {
+	console.log('Could not connect with server in deleteGig in saga');
+}
+}
+
 function* gigsSaga() {
 	yield takeLatest('FETCH_GIGS', fetchGigs),
 	yield takeLatest('FETCH_COMPLETED_GIGS', fetchCompletedGigs),
 	yield takeLatest('FETCH_UPCOMING_GIGS', fetchUpcomingGigs),
 	yield takeLatest('POST_GIG', postGigs);
+	yield takeLatest('DELETE_GIG', deleteGig);
 }
 
 export default gigsSaga;
