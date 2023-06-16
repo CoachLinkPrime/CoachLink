@@ -150,20 +150,22 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 	let userId = req.user.id;
 	let sqlQuery = `
 		DELETE FROM "gig"
-		WHERE "id"=$1
-		AND "user_id"=$2;`;
+			WHERE "id"=$1
+				AND "user_id"=$2
+			OR "id"=$1
+				AND "coach_user_id"=$2;`;
 	let sqlValues = [gigIdToDelete, userId];
-	
+
 	pool
-	.query(sqlQuery, sqlValues)
-	.then((dbRes) => {
-		console.log('Entered Delete route successfully');
-		// res.send(200);
-	})
-	.catch((dbErr) => {
-		console.log('error with Delete route:', dbErr);
-		res.sendStatus(500);
-	});
+		.query(sqlQuery, sqlValues)
+		.then((dbRes) => {
+			// console.log('Entered Delete route successfully');
+			res.send(200);
+		})
+		.catch((dbErr) => {
+			console.log('error with Delete route:', dbErr);
+			res.sendStatus(500);
+		});
 })
 
 module.exports = router;
