@@ -46,7 +46,7 @@ function* deleteGig(action) {
 	try{
 		console.log('In saga deleteGig, got the request:', action.payload);
 		yield axios.delete(`api/gig/${action.payload}`)
-		yield put ({type: 'DELETE_GIG'})
+		yield put ({type: 'FETCH_UPCOMING_GIGS'})
 } catch {
 	console.log('Could not connect with server in deleteGig in saga');
 }

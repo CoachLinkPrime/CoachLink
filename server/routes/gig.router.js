@@ -42,7 +42,7 @@ router.get('/past', rejectUnauthenticated, (req, res) => {
 	pool
 		.query(sqlQuery, sqlValues)
 		.then((dbRes) => {
-			console.log('results from past gigs GET route:', dbRes.rows);
+			// console.log('results from past gigs GET route:', dbRes.rows);
 			res.send(dbRes.rows);
 		})
 		.catch((dbErr) => {
@@ -64,7 +64,7 @@ router.get('/upcoming', rejectUnauthenticated, (req, res) => {
 	pool
 		.query(sqlQuery, sqlValues)
 		.then((dbRes) => {
-			console.log('Upcoming gigs GET route:', dbRes.rows);
+			// console.log('Upcoming gigs GET route:', dbRes.rows);
 			res.send(dbRes.rows);
 		})
 		.catch((dbErr) => {
@@ -141,5 +141,31 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 			console.log('Error conecting with DB', dbErr);
 		});
 });
+
+// DELETE route for user_id (the user who published a gig) to remove upcoming gig in Overview
+// this is by user_id, not coach_user_id, because gigs are published by user_id
+// (gigs are accepted/applied to by coach_user_id and should NOT have delete access)
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+	let gigIdToDelete = req.params.id;
+	let userId = req.user.id;
+	let sqlQuery = `
+		DELETE FROM "gig"
+			WHERE "id"=$1
+				AND "user_id"=$2
+			OR "id"=$1
+				AND "coach_user_id"=$2;`;
+	let sqlValues = [gigIdToDelete, userId];
+
+	pool
+		.query(sqlQuery, sqlValues)
+		.then((dbRes) => {
+			// console.log('Entered Delete route successfully');
+			res.send(200);
+		})
+		.catch((dbErr) => {
+			console.log('error with Delete route:', dbErr);
+			res.sendStatus(500);
+		});
+})
 
 module.exports = router;
