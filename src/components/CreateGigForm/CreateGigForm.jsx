@@ -66,6 +66,7 @@ function CreateGigForm() {
         </InputLabel>
         <div>
         <FilledInput
+        margin='dense'
         placeholder='Title'
         size='small'
         type='text'
