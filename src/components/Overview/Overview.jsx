@@ -11,17 +11,9 @@ function Overview() {
     // if there are no completed gigs in the store [], then 
     // dispatch a call to fetch them from the database 
     useEffect(() => {
-        if (!pastGigs.length) {
-            dispatch({
-                type: 'FETCH_COMPLETED_GIGS'
-            });
-        };
-        if (!upcomingGigs.length) {
-            dispatch({
-              type: 'FETCH_UPCOMING_GIGS'
-            });
-          }
-        }, [dispatch]);
+        dispatch({ type: 'FETCH_COMPLETED_GIGS' });
+        dispatch({ type: 'FETCH_UPCOMING_GIGS' });
+    }, [dispatch]);
 
     // need to convert the DB format of date to something more readable:
     function convertDateFormat(date) {
@@ -57,5 +49,6 @@ function Overview() {
                 />
             ))}
         </div>
-)};
+    )
+};
 export default Overview;

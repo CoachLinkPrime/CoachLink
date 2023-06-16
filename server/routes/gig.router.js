@@ -142,4 +142,19 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 		});
 });
 
+// DELETE route for user_id (the user who published a gig) to remove upcoming gig in Overview
+// this is by user_id, not coach_user_id, because gigs are published by user_id
+// (gigs are accepted/applied to by coach_user_id and should NOT have delete access)
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+	let gigIdToDelete = req.params.id;
+	let userId = req.user.id;
+	let sqlQuery = `
+		DELETE FROM "gig"
+		WHERE "id"=$1
+		AND "user_id"=$2;`;
+	let sqlValues = [gigIdToDelete, userId];
+
+	console.log('This is what you will be deleting from the DB!:', sqlQuery, sqlValues);
+})
+
 module.exports = router;
