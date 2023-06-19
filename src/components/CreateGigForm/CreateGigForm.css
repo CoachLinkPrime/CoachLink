@@ -1,0 +1,63 @@
+.box {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .box input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 13px;
+    width: 13px;
+    background-color: #7EBBF1;;
+    border-radius: 50%;
+  }
+
+  .button:hover input ~ .button {
+    background-color: #ccc;
+  }
+
+  .button input:checked ~ button {
+    background-color: #2196F3;
+  }
+
+  .button:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .box input:checked ~ .button:after {
+    display: block;
+  }
+
+  .box .button:after {
+    top: 4px;
+    left: 4px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: black;
+  }
+
+  table {
+    margin-top: 1em;
+  }
+
+  
