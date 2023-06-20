@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Container, Input } from '@mui/material';
+import { Container, FilledInput, InputLabel, Select, MenuItem, InputAdornment, Input } from '@mui/material';
+import './CreateGigForm.css'
 
 function CreateGigForm() {
 
@@ -61,49 +62,58 @@ function CreateGigForm() {
        <h3>Lets get started!</h3>
        <form>
        <div>
-        <label>
+        <InputLabel>
             Title:
-        </label>
-        <input
+        </InputLabel>
+        <div>
+        <Input
+        margin='dense'
         placeholder='Title'
+        size='small'
         type='text'
         value={title}
         onChange={(event) => setTitle(event.target.value)}
         />
+        </div>
        </div>
        <div>
-        <label>
+        <InputLabel>
             Date:
-        </label>
-        <input
+        </InputLabel>
+        <Input
+        size='small'
         type='date'
         value={date}
         onChange={(event) => setDate(event.target.value)}
         />
        </div>
        <div>
-        <label>
+        <InputLabel>
             Time:
-        </label>
-        <input
+        </InputLabel>
+        <Input
         placeholder='Time'
         type='time'
+        size='small'
         value={timeOne}
         onChange={(event) => setTimeOne(event.target.value)}
         /> - 
-        <input
+        <Input
         type='time'
+        size='small'
         value={timeTwo}
         onChange={(event) => setTimeTwo(event.target.value)}
         />
        </div>
        <div>
-        <label>
+        <InputLabel>
             Price:
-        </label>
-        <input
+        </InputLabel>
+        <Input
         placeholder='Price'
+        size='small'
         type='number'
+        startAdornment={<InputAdornment position='start'>$</InputAdornment>}
         value={price}
         onChange={(event) => setPrice(event.target.value)}
         />
@@ -111,275 +121,308 @@ function CreateGigForm() {
        <table>
         <tr>
             <td><div>
-            <label>
+            <label className = 'box'>
                 Instuctor
-            </label>
-            <input 
-            type = 'radio'
+            
+            <input
+            type = 'radio'       
             value = 'Instuctor'
+            label='Instuctor'
             name = 'type'
             onChange={(event) => setType(event.target.value)}
             /> 
+            <span className='button'></span>
+            </label>
         </div></td>
         <td><div>
-            <label>
+            <label className = 'box'>
                 Coach
-            </label>
-            <input 
+            <input
             type = 'radio'
             value = 'Coach'
             name = 'type'
             onChange={(event) => setType(event.target.value)}
             />
+            <span className='button' ></span>
+             </label>
             </div></td>
         </tr>
         <tr> 
             <td><div>
-             <label>
-                    Level 1
-                </label>
+             <label className = 'box'>
+                    Level 1  
                 <input
                 type = 'radio'
                 value = 'level 1'
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                <span className='button'></span>
+                </label>
                 </div>
                 </td>
                 <td><div>
-                <label>
+                <label className = 'box'>
                     Level 100
-                </label>
                 <input
                 type = 'radio'
                 value = 'level 100'
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                <span className='button'></span>
+                </label>
                 </div></td>
                 </tr>
                 <tr>
                     <td><div>
-                 <label>
+                 <label className = 'box'>
                     Level 2
-                </label>
                 <input
                 type = 'radio'
                 value = 'level 2'
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                <span className='button'></span>
+                </label>
                 </div></td>
                 <td> <div>
-                <label>
+                <label className = 'box'>
                     Level 200
-                </label>
                 <input
                 type = 'radio'
                 value = 'level 200'
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                <span className='button'></span>
+                </label>
                 </div></td>
                 </tr>
                 <tr>
                     <td><div>
-                 <label>
-                    Level 3
-                </label>
+                 <label className = 'box'>
+                    Level 3               
                 <input
                 type = 'radio'
                 value = 'level 3'
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                <span className='button'></span>
+                </label>
                 </div></td>
                 <td><div>
-                <label>
-                    Level 300
-                </label>
+                <label className = 'box'>
+                    Level 300               
                 <input
                 type = 'radio'
                 value = 'level 300'
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                <span className='button'></span>
+                </label>
                 </div></td>
                 </tr>
                 <tr>
                     <td><div>
-                 <label>
-                    Level 4
-                </label>
+                 <label className = 'box'>
+                    Level 4               
                 <input
                 type = 'radio'
                 value = 'level 4'
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                <span className='button'></span>
+                </label>
                 </div></td>
                 <td> 
                 <div>
-                <label>
-                    Level 400
-                </label>
+                <label className = 'box'>
+                    Level 400                
                 <input
                 type = 'radio'
                 value = 'level 400'
                 name = 'level'
                 onChange={(event) => setLevel(event.target.value)}
                 />
+                <span className='button'></span>
+                </label>
                 </div></td>
                 </tr>
        </table>
-      
             <div>
-            <label>
+            <label className = 'box'>
                 Uncertified
-            </label>
             <input  
             type = 'radio'
             value = 'uncertfied'
             name = 'type'
             onChange={(event) => setType(event.target.value)}
             />
+            <span className='button'></span>
+            </label>
             </div>
         
         <div>
-            <label>
+            <InputLabel>
                 Years of experience:
-            </label>
-            <input
-            playholder='Years of Experience'
+            </InputLabel>
+            <Input
+            size='small'
             type='number'
             value={years}
             onChange={(event) => setYears(event.target.value)}
             />
         </div>
         <div>
-            <label>
+            <InputLabel id='location'>
                 Location:
-            </label>
-            <select id = 'location' onChange={(event) => setLocation(event.target.value)}>
-                <option value=''>--Where is your club?--</option>
-                <option value='Lutsen Mountains'>Lutsen Mountains</option>
-                <option value='Spirit Mountain'>Spirit Mountain</option>
-                <option value='Giants Ridge'>Giants Ridge</option>
-                <option value='Afton Alps'>Afton Alps</option>
-                <option value='Mt. Kato'>Mt. Kato</option>
-                <option value='Welch Village'>Welch Village</option>
-                <option value='Powder Ridge'>Powder Ridge</option>
-                <option value='Wild Mountain'>Wild Mountain</option>
-                <option value='Andes Tower Hills'>Andes Tower Hills</option>
-                <option value='Buena Vista'>Buena Vista</option>
-                <option value='Hyland Hills'>Hyland Hills</option>
-                <option value='Detroit Mountain'>Detroit Mountain</option>
-                <option value='Buck Hill Ski Area'>Buck Hill Ski Area</option>
-                <option value='Trollhaugen'>Trollhaugen</option>
-                <option value='Granite Peak'>Granite Peak</option>
-            </select>
+            </InputLabel>
+            <Select labelId='location' label= "--Where is your club--" onChange={(event) => setLocation(event.target.value)}>
+                <MenuItem value='Lutsen Mountains'>Lutsen Mountains</MenuItem>
+                <MenuItem value='Spirit Mountain'>Spirit Mountain</MenuItem>
+                <MenuItem value='Giants Ridge'>Giants Ridge</MenuItem>
+                <MenuItem value='Afton Alps'>Afton Alps</MenuItem>
+                <MenuItem value='Mt. Kato'>Mt. Kato</MenuItem>
+                <MenuItem value='Welch Village'>Welch Village</MenuItem>
+                <MenuItem value='Powder Ridge'>Powder Ridge</MenuItem>
+                <MenuItem value='Wild Mountain'>Wild Mountain</MenuItem>
+                <MenuItem value='Andes Tower Hills'>Andes Tower Hills</MenuItem>
+                <MenuItem value='Buena Vista'>Buena Vista</MenuItem>
+                <MenuItem value='Hyland Hills'>Hyland Hills</MenuItem>
+                <MenuItem value='Detroit Mountain'>Detroit Mountain</MenuItem>
+                <MenuItem value='Buck Hill Ski Area'>Buck Hill Ski Area</MenuItem>
+                <MenuItem value='Trollhaugen'>Trollhaugen</MenuItem>
+                <MenuItem value='Granite Peak'>Granite Peak</MenuItem>
+            </Select>  
        </div>
        <div>
        <table>
         <tr>
-            <td><label>
-            Ski
-        </label>
+            <td>
+        <label className = 'box'>
+            Ski   
         <input 
             type = 'radio'
             value = 'ski'
             name = 'sport' 
             onChange={(event) => setSport(event.target.value)}
-            /></td>
-            <td> <label>
+            />
+            <span className='button'></span>
+            </label>
+            </td>
+            <td>
+         <label className = 'box'>
             Snowboard
-        </label>
         <input 
             type = 'radio'
             value = 'snowboard'
             name = 'sport' 
             onChange={(event) => setSport(event.target.value)}
-            /></td>
+            />
+            <span className='button'></span>
+            </label>
+            </td>
         </tr>
         <tr>
-            <td><label>
+            <td><label className = 'box'>
                 Alpine
-            </label>
             <input 
             type = 'radio'
             value = 'Alpine'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)} 
-            /></td>
-            <td><div><label>
-                Alpine
+            />
+            <span className='button'></span>
             </label>
+            </td>
+            <td><label className = 'box'>
+                Alpine (PGS/PSL)     
             <input 
             type = 'radio'
             value = 'Alpine'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            /></div></td>
+            />
+            <span className='button'></span>
+            </label>
+            </td>
         </tr>
         <tr>
-            <td><label>
+            <td><label className = 'box'>
                 Slopestyle
-            </label>
             <input 
             type = 'radio'
             value = 'Slopestyle'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            /></td>
-            <td><label>
-                Boarder Cross
+            />
+            <span className='button'></span>
             </label>
+            </td>
+            <td><label className = 'box'>
+                Boarder Cross
             <input 
             type = 'radio'
             value = 'Boarder cross'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            /></td>
+            />
+            <span className='button'></span>
+            </label>
+            </td>
         </tr>
         <tr>
-            <td><label>
-                Slopestyle
-            </label>
-            <input 
-            type = 'radio'
-            value = 'Slopestyle'
-            name = 'activity'
-            onChange={(event) => setActivity(event.target.value)}  
-            /></td>
-            <td><label>
+            <td><label className = 'box'>
                 Skier Cross
-            </label>
             <input 
             type = 'radio'
             value = 'Skier cross'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            /></td>
+            />
+            <span className='button'></span>
+            </label>
+            </td>
+            <td><label className = 'box'>
+                Slopestyle
+            <input 
+            type = 'radio'
+            value = 'Slopestyle'
+            name = 'activity'
+            onChange={(event) => setActivity(event.target.value)}  
+            />
+            <span className='button'></span>
+            </label>
+            </td>
         </tr>
         <tr>
-            <td><label>
+            <td><label className = 'box'>
                 Halfpipe
-            </label>
             <input 
             type = 'radio'
             value = 'Halfpipe'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            /></td>
-            <td> <label>
-                Halfpipe
+            />
+            <span className='button'></span>
             </label>
+            </td>
+            <td> <label className = 'box'>
+                Halfpipe
             <input 
             type = 'radio'
             value = 'Halfpipe'
             name = 'activity'
             onChange={(event) => setActivity(event.target.value)}  
-            /></td>
+            />
+            <span className='button'></span>
+            </label>
+            </td>
         </tr>
        </table>
        </div>

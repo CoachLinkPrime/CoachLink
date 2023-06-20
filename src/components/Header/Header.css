@@ -1,0 +1,24 @@
+
+
+.h2Text {
+    font-family: monospace;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black,2px 0 black, 0 -2px black;
+    font-size: 40px;
+    position: relative;
+}
+
+.logo {
+    float: center;
+    width: 20%;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    background-color: #7EBBF1;
+    color:black;
+  }

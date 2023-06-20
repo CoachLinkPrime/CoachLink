@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+import Header from '../Header/Header';
 import AboutPage from '../AboutPage/AboutPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -40,6 +40,9 @@ function App() {
 	return (
 		<Router>
 			<div>
+				<header>
+					<Header />
+				</header>
 				<Switch>
 					{/* Visiting localhost:3000 will redirect to localhost:3000/home */}
 					<Redirect exact from='/' to='/home' />

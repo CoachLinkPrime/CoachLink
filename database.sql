@@ -41,12 +41,12 @@ CREATE TYPE ski_or_snow_enum AS ENUM ('ski', 'snowboard');
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "username" VARCHAR (90) UNIQUE NOT NULL,
     "password" VARCHAR (100) NOT NULL,
     "name" VARCHAR (100),
     "phone_number" VARCHAR (10),
     "email" VARCHAR (100) NOT NULL,
-    "description" VARCHAR (1200),
+    "description" VARCHAR (1300),
     "legal_status" BOOLEAN DEFAULT FALSE,
     "date_accepted" VARCHAR
 );
@@ -57,13 +57,14 @@ CREATE TABLE "gig" (
     "coach_user_id" INTEGER,
     "title" VARCHAR (80),
     "description" VARCHAR (1200),
-    "date" DATE,
+    "date_for_gig" VARCHAR(80),
     "date_applied" DATE,
+    "date_published" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "year_of_experience" INTEGER,
-    "time" VARCHAR (80),
+    "time_for_gig" VARCHAR (80),
     "coach_level" VARCHAR (80),
     "activity_type" activity_type_enum,
-    "ski_or_snow" ski_or_snow_enum,,
+    "ski_or_snow" ski_or_snow_enum,
     "location" location_enum,
     "price" INTEGER,
     "status" BOOLEAN,
@@ -75,13 +76,15 @@ CREATE TABLE "gig" (
 -- Dummy data for user
 INSERT INTO "user" ("username", "password", "name", "phone_number", "email", "description", "legal_status", "date_accepted")
 VALUES
+
     ('john123', 'password123', 'John Doe', '1234567890', 'john@example.com', 'Experienced coach', true, '2023-01-01'),
     ('jane456', 'pass456', 'Jane Smith', '9876543210', 'jane@example.com', 'Certified instructor', true, '2023-02-15'),
     ('sam789', 'pass789', 'Sam Johnson', '5555555555', 'sam@example.com', 'Freestyle specialist', true, '2023-03-10');
 
 -- Dummy data for gig
-INSERT INTO "gig" ("user_id", "coach_user_id", "title", "description", "date_posted", "date_applied", "year_of_experience", "time", "coach_level", "activity_type", "ski_or_snow", "location", "price", "status", "applied_status")
+INSERT INTO "gig" ("user_id", "coach_user_id", "title", "description", "date_for_gig", "date_applied", "year_of_experience", "time_for_gig", "coach_level", "activity_type", "ski_or_snow", "location", "price", "status", "applied_status")
 VALUES
+
     (1, 2, 'Ski Lesson', 'Private ski lesson for beginners', '2023-01-05', '2023-01-07', 3, '09:00:00', 'Instructor level 3', 'Alpine', 'ski', 'Lutsen Mountains', 50, true, true),
     (2, 1, 'Snowboard Coaching', 'Advanced snowboard coaching session', '2023-02-10', '2023-02-12', 5, '13:00:00', 'Instructor level 4', 'Slopestyle', 'snowboard', 'Spirit Mountain', 75, true, true),
     (3, 1, 'Freestyle Training', 'Intensive freestyle training camp', '2023-03-15', '2023-03-18', 8, '10:00:00', 'Coach level 100', 'Halfpipe', 'ski', 'Giants Ridge', 100, true, true);
