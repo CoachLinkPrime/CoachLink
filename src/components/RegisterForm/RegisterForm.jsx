@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import './RegisterForm.css'
+import { InputLabel, TextField, Input } from '@mui/material';
 
 function RegisterForm() {
 
@@ -39,43 +41,45 @@ function RegisterForm() {
           {errors.registrationMessage}
         </h3>
       )}
-
       <div>
-      <label htmlFor="email">
-          Email:
-          <input
+          <TextField
+            required
+            placeholder='Email'
+            label='Email'
             type="email"
             name="email"
+            margin='normal'
+            size='small'
             value={email}
-            required
             onChange={(event) => setEmail(event.target.value)}
           />
-        </label>
+        
       </div>
       <div>
 
-        <label htmlFor="username">
-          Username:
-          <input
+          <TextField
             type="text"
+            label='Username'
+            size='small'
+            placeholder='Username'
+            margin='normal'
             name="username"
             value={username}
             required
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
       </div>
       <div>
-        <label htmlFor="password">
-          Password:
-          <input
+          <TextField
             type="password"
+            label='Password'
+            margin='normal'
             name="password"
+            size='small'
             value={password}
             required
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
       </div>
       <div>
         <input className="btn" type="submit" name="submit" value="Create" />

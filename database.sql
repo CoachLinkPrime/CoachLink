@@ -37,7 +37,7 @@ CREATE TYPE coach_level_enum AS ENUM (
     'Unqualified'
 );
 
-CREATE TYPE ski_or_snow_enum AS ENUM ('ski', 'snowboard');
+CREATE TYPE ski_or_snow_enum AS ENUM ('Ski', 'Snowboard');
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
@@ -89,9 +89,9 @@ VALUES
 INSERT INTO "gig" ("user_id", "coach_user_id", "title", "description", "date_for_gig", "date_applied", "year_of_experience", "time_for_gig", "coach_level", "activity_type", "ski_or_snow", "location", "price", "status", "applied_status")
 VALUES
 
-    (1, 2, 'Ski Lesson', 'Private ski lesson for beginners', '2023-01-05', '2023-01-07', 3, '09:00:00', 'Instructor level 3', 'Alpine', 'ski', 'Lutsen Mountains', 50, true, true),
-    (2, 1, 'Snowboard Coaching', 'Advanced snowboard coaching session', '2023-02-10', '2023-02-12', 5, '13:00:00', 'Instructor level 4', 'Slopestyle', 'snowboard', 'Spirit Mountain', 75, true, true),
-    (3, 1, 'Freestyle Training', 'Intensive freestyle training camp', '2023-03-15', '2023-03-18', 8, '10:00:00', 'Coach level 100', 'Halfpipe', 'ski', 'Giants Ridge', 100, true, true);
+    (1, 2, 'Ski Lesson', 'Private ski lesson for beginners', '2023-01-05', '2023-01-07', 3, '09:00:00', 'Instructor level 3', 'Alpine', 'Ski', 'Lutsen Mountains', 50, true, true),
+    (2, 1, 'Snowboard Coaching', 'Advanced snowboard coaching session', '2023-02-10', '2023-02-12', 5, '13:00:00', 'Instructor level 4', 'Slopestyle', 'Snowboard', 'Spirit Mountain', 75, true, true),
+    (3, 1, 'Freestyle Training', 'Intensive freestyle training camp', '2023-03-15', '2023-03-18', 8, '10:00:00', 'Coach level 100', 'Halfpipe', 'Ski', 'Giants Ridge', 100, true, true);
 
     -- "coach_level" coach_level_enum,
     -- "activity_type" activity_type_enum,

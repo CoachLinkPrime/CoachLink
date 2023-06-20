@@ -308,7 +308,7 @@ function CreateGigForm() {
             Ski   
         <input 
             type = 'radio'
-            value = 'ski'
+            value = 'Ski'
             name = 'sport' 
             onChange={(event) => setSport(event.target.value)}
             />
@@ -320,7 +320,7 @@ function CreateGigForm() {
             Snowboard
         <input 
             type = 'radio'
-            value = 'snowboard'
+            value = 'Snowboard'
             name = 'sport' 
             onChange={(event) => setSport(event.target.value)}
             />
