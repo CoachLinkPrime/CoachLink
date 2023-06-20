@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
-import user from './user.reducer';
+import {userReducer, profileReducer} from './user.reducer';
 import { getGigs, getCompletedGigs, upcomingGigsReducer } from './gigs.reducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -11,10 +11,11 @@ import { getGigs, getCompletedGigs, upcomingGigsReducer } from './gigs.reducer';
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
 	errors, // contains registrationMessage and loginMessage
-	user, // will have an id and username if someone is logged in
+	user: userReducer, // will have an id and username if someone is logged in
 	gigs: getGigs,
 	pastGigs: getCompletedGigs,
-	upcomingGigs: upcomingGigsReducer
+	upcomingGigs: upcomingGigsReducer,
+	profile: profileReducer
 });
 
 export default rootReducer;
