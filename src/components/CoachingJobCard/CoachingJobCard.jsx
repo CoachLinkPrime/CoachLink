@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-function CoachingJobCard({ gig }) {
+function CoachingJobCard({ gig, convertDateFormat }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -26,7 +26,7 @@ function CoachingJobCard({ gig }) {
 					<Typography variant='h4'>{gig.title}</Typography>
 					<Typography variant='h5'>{gig.description}</Typography>
 					<Typography variant='h6'>
-						Day Of Gig: {gig.date_for_gig.toLocaleString('en-US')},{' '}
+						Day Of Gig: {convertDateFormat(gig.date_for_gig)},{' '}
 						{gig.time_for_gig}
 					</Typography>
 					<Typography variant='body1'>
