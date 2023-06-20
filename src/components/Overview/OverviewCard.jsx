@@ -30,7 +30,7 @@ function OverviewCard({ id, title, date_for_gig, convertDateFormat }) {
         <Typography variant="h4">{title}</Typography>
         <Typography variant="h5">{convertDateFormat(date_for_gig)}</Typography>
 
-        <OverviewDelete onClick={() => handleDeleteClick(id)} />
+        <OverviewDelete onClick={() => handleDelete(id)} />
 
       </CardContent>
 
