@@ -24,8 +24,28 @@ function* fetchUser() {
   }
 }
 
+function* fetchProfile() {
+	try {
+		const response = yield axios.get('/api/user/profile');
+		yield put({ type: 'SET_PROFILE', payload: response.data });
+	} catch {
+		console.log('error getting profile response');
+	}
+}
+function* editProfile(action) {
+  try {
+    const { payload } = action;
+    const response = yield axios.put('/api/user/profile/edit', payload);
+  } catch (error) {
+    console.log('Error saving profile', error);
+  }
+}
+
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('FETCH_PROFILE', fetchProfile);
+  yield takeLatest('EDIT_PROFILE', editProfile);
 }
 
 export default userSaga;
