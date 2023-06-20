@@ -18,6 +18,6 @@ export default function* rootSaga() {
 		registrationSaga(),
 		userSaga(),
 		legalSaga(), //legal saga is connected
-		gigsSaga(),
+		gigsSaga()
 	]);
 }
