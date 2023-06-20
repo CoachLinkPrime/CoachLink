@@ -30,9 +30,7 @@ function CoachingJobList() {
 
 	// need to convert the DB format of date to something more readable:
 	function convertDateFormat(date) {
-		// first convert the date string to an object
 		const dateObj = new Date(date);
-		// then can convert that to differently formatted date string with JavaScript toDateString():
 		return dateObj.toDateString();
 	}
 
