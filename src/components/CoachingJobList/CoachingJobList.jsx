@@ -8,19 +8,20 @@ function CoachingJobList() {
 	const dispatch = useDispatch();
 	const gigs = useSelector((store) => store.gigs);
 	const [filters, setFilters] = useState({
-		skiFilter: true,
-		snowboardFilter: true,
-		uncertifiedFilter: true
+		skiFilter: false,
+		snowboardFilter: false,
+		uncertifiedFilter: false
 	})
 
 	// need a function to handle the toggle:
 	// using spread operator so state isn't mutated and can update one key/value at a time
 	const handleToggle = (filterName) => {
-		setFilters((prevFilters) => ({
-			...prevFilters,
-			[filterName]: !prevFilters[filterName]
-		}));
-		console.log('Current state:', filters);
+		const newFilters = {
+			...filters,
+			[filterName]: !filters[filterName]
+		}
+		setFilters(newFilters);
+		console.log('Current state:', newFilters);
 	}
 
 	//this starts the dispatch to begin our flow - this will reload our side effect whenever the dispatch is changed
@@ -37,6 +38,7 @@ function CoachingJobList() {
 	return (
 		<>
 			<h1>Avaliable Gigs</h1>
+			<h2>Search Filters:</h2>
 			<FormGroup>
 				<FormControlLabel
 					control={
