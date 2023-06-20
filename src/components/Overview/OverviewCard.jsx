@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import OverviewDelete from './OverviewDelete';
 
 function OverviewCard({ id, title, date_for_gig, convertDateFormat }) {
 
@@ -28,15 +29,11 @@ function OverviewCard({ id, title, date_for_gig, convertDateFormat }) {
       <CardContent>
         <Typography variant="h4">{title}</Typography>
         <Typography variant="h5">{convertDateFormat(date_for_gig)}</Typography>
-        {/* Other card content */}
-        <Button
-          variant="contained"
-          color="error"
-          onClick={() => handleDelete(id)}
-        >
-          Delete
-        </Button>
+
+        <OverviewDelete onClick={() => handleDeleteClick(id)} />
+
       </CardContent>
+
     </Card>
 
   );
