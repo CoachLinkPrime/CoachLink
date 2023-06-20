@@ -29,8 +29,8 @@ function HomeView() {
 					src='/images/snowboard_coach.jpeg'
 					alt='snowboard coach'
 				/>
-				<h4>Coaching Jobs</h4>
-				<p>Click here to find available shifts</p>
+				<h4>Looking for a gig</h4>
+				<p>Click here to find available gigs</p>
 			</div>
 			<div className='card' onClick={addGigs}>
 				<img
@@ -38,7 +38,7 @@ function HomeView() {
 					src='/images/snowboard_dudes.jpeg'
 					alt='snowboard dudes'
 				/>
-				<h4>Looking for Coaches</h4>
+				<h4>Looking for a coach</h4>
 				<p>Click here to create a gig for industry professionals to apply</p>
 			</div>
 			
