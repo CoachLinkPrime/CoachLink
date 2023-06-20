@@ -47,6 +47,10 @@ CREATE TABLE "user" (
     "phone_number" VARCHAR (10),
     "email" VARCHAR (100) NOT NULL,
     "description" VARCHAR (1300),
+    "years_of_experience" INTEGER,
+    "coach_level" coach_level_enum,
+    "activity_type" activity_type_enum,
+    "ski_or_snow" ski_or_snow_enum,
     "legal_status" BOOLEAN DEFAULT FALSE,
     "date_accepted" VARCHAR
 );
