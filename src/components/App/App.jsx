@@ -41,7 +41,7 @@ function App() {
 		<Router>
 			<div>
 				<header>
-					<Header />
+					{user.id && <Header />}
 				</header>
 				<Switch>
 					{/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -78,7 +78,7 @@ function App() {
 						<InfoPage />
 					</ProtectedRoute>
 
-					<ProtectedRoute exact path = '/ineedacoach'>
+					<ProtectedRoute exact path='/ineedacoach'>
 
 						<CreateGigForm />
 					</ProtectedRoute>
@@ -147,8 +147,8 @@ function App() {
 						<h1>404</h1>
 					</Route>
 				</Switch>
-				<Footer />
-				<BottomNavBar />
+				{user.id && <Footer />}
+				{user.id && <BottomNavBar />}
 			</div>
 		</Router>
 	);

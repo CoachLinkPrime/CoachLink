@@ -34,8 +34,10 @@ function RegisterForm() {
 	}; // end registerUser
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
-      <h2>Create An Account Here</h2>
+    <form className="reg-form" onSubmit={registerUser}>
+      <center>
+      <h2>Create An Account</h2>
+      </center>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}

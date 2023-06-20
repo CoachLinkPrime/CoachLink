@@ -26,8 +26,10 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
+    <form className="reg-form" onSubmit={login}>
+      <center>
       <h2>Login</h2>
+      </center>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
