@@ -7,6 +7,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
+import CoachingJobApply from './CoachingJobApply';
+
 function CoachingJobCard({ gig, convertDateFormat }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -41,9 +43,7 @@ function CoachingJobCard({ gig, convertDateFormat }) {
 					<Typography>Looking for: {gig.coach_level}</Typography>
 					<Typography>Ski Resort: {gig.location}</Typography>
 					<Typography>Will Pay: ${gig.price}</Typography>
-					<Button variant='contained' onClick={handleApply}>
-						Apply
-					</Button>
+					<CoachingJobApply onClick={() => handleApply(gig.id)}/>
 				</CardContent>
 			</Card>
 		// </Box>
