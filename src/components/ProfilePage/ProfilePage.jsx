@@ -238,8 +238,8 @@ function ProfilePage() {
                                         <input
                                             type='radio'
                                             name='ski_or_snow'
-                                            value='ski'
-                                            checked={editedProfile.ski_or_snow === 'ski'}
+                                            value='Ski'
+                                            checked={editedProfile.ski_or_snow === 'Ski'}
                                             onChange={handleInputChange}
                                         /></td>
                                     <td> <label>
@@ -248,8 +248,8 @@ function ProfilePage() {
                                         <input
                                             type='radio'
                                             name='ski_or_snow'
-                                            value='snowboard'
-                                            checked={editedProfile.ski_or_snow === 'snowboard'}
+                                            value='Snowboard'
+                                            checked={editedProfile.ski_or_snow === 'Snowboard'}
                                             onChange={handleInputChange}
                                         /></td>
                                 </tr>

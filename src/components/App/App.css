@@ -63,11 +63,11 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #1001bd;
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: #0303b6;
 }
 
 .btn_asLink:hover {

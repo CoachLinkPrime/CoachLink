@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './ExplinationPage.css';
+import Footer from '../Footer/Footer';
 
 function ExplinationPage() {
     const history = useHistory();
@@ -22,25 +23,27 @@ function ExplinationPage() {
         history.push('/registration');
     };
     return (
-        <div className="container">
+        <div className="body-container">
             <center>
-                <h2>Welcome to CoachLink!</h2>
-                <div className="slide-container">
-                    <div className="slide-content">{slides[currentSlide]}</div>
+                <h2 className='h2Text'>Welcome to CoachLink!</h2>
+                <div className='white-back'>
+                    <img className='logo-exp' src='/images/logo.png' alt='CoackLinklogo' />
+                    <div className="slide-container">
+                        <div className="slide-content">{slides[currentSlide]}</div>
+                    </div>
+                    <div>
+                        {currentSlide > 0 && (
+                            <button onClick={handlePreviousSlide}>Previous</button>
+                        )}
+                        {currentSlide < slides.length - 1 ? (
+                            <button onClick={handleNextSlide}>Next</button>
+                        ) : (
+                            <button onClick={handleRegister}>Create Account</button>
+                        )}
+                    </div>
                 </div>
-                <div>
-                    <button onClick={handlePreviousSlide} disabled={currentSlide === 0}>
-                        Previous
-                    </button>
-                    <button
-                        onClick={handleNextSlide}
-                        disabled={currentSlide === slides.length - 1}
-                    >
-                        Next
-                    </button>
-                </div>
-                <button className='register-ep' onClick={handleRegister} >register</button>
             </center>
+            <Footer />
         </div>
     );
 }

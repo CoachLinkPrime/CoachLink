@@ -6,7 +6,8 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <div className='reg-body'>
+      <h1 className='h2Text'>CoachLink</h1>
       <LoginForm />
 
       <center>
