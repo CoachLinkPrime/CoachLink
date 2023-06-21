@@ -20,8 +20,14 @@ function CoachingJobCard({ gig, convertDateFormat }) {
 	};
 
 	return (
-		<Box border={3} sx={{ borderRadius: '8px', m: 2 }}>
-			<Card variant='outlined' sx={{ maxWidth: 500, minWidth: 500 }}>
+		// <Box border={3} sx={{ borderRadius: '8px', m: 2 }}>
+			<Card variant='outlined' sx={{
+				border: '2.5px solid black',
+				maxWidth: { xs: 300, sm: 400, md: 500 },
+				minWidth: 300,
+				margin: 'auto',
+				marginBottom: '1rem'
+				}}>
 				<CardContent>
 					<Typography variant='h4'>{gig.title}</Typography>
 					<Typography variant='h5'>{gig.description}</Typography>
@@ -40,7 +46,7 @@ function CoachingJobCard({ gig, convertDateFormat }) {
 					</Button>
 				</CardContent>
 			</Card>
-		</Box>
+		// </Box>
 	);
 }
 
