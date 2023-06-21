@@ -94,6 +94,6 @@ VALUES
     (3, 1, 'Freestyle Training', 'Intensive freestyle training camp', '2023-03-15', '2023-03-18', 8, '10:00:00', 'Coach level 100', 'Halfpipe', 'Ski', 'Giants Ridge', 100, true, true);
 
     -- "coach_level" coach_level_enum,
-    -- "activity_type" activity_type_enum,
+    -- "activity_type" activity_type_enum,`
     -- "ski_or_snow" ski_or_snow_enum,
-    -- "location" location_enum,
+    -- "location" location_enum,`

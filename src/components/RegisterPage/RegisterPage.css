@@ -1,13 +1,13 @@
-.reg-body{
-    background-image: url("/Users/brycemorries/Aprime/prime/CoachLink/public/images/login-mtn4.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+.reg-body {
+	background-image: url('../../../public/images/trianglify.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
 }
-.reg-form{
-    background-color: white;
-    border-radius: 15px;
-    margin-top: 10%;
-    padding: 5%;
-    background-image: linear-gradient(to bottom, #dfecfb, #cee5f7);
+.reg-form {
+	background-color: white;
+	border-radius: 15px;
+	margin-top: 10%;
+	padding: 5%;
+	background-image: linear-gradient(to bottom, #dfecfb, #cee5f7);
 }
