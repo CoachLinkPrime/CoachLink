@@ -4,17 +4,19 @@ import CoachingJobCard from '../CoachingJobCard/CoachingJobCard';
 import FilterButton from '../FilterButton/FilterButton';
 import { FormGroup, FormControlLabel, Switch } from '@mui/material';
 import "./CoachingCardList.css"
-
-// create an object to map the filter options: 
+// Outside of the function, define some constants
+// (this is so it doesn't recalculate every time CoachingJobList component
+// is re-rendered. It is going to be constant!) 
+	// First, create an object to map the filter options:
 const FILTER_MAP = {
 	All: () => true,
 	Ski: (gig) => gig.ski_or_snow === "Ski",
 	Snowboard: (gig) => gig.ski_or_snow === "Snowboard"
 }
-
-// use Object.keys() method to collect an array of gig objects:
+// use Object.keys() method to collect an array of the filter names:
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
+// component function START: 
 function CoachingJobList() {
 	const dispatch = useDispatch();
 	const gigs = useSelector((store) => store.gigs);
