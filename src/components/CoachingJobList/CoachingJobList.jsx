@@ -2,21 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CoachingJobCard from '../CoachingJobCard/CoachingJobCard';
 import FilterButton from '../FilterButton/FilterButton';
-import { FormGroup, FormControlLabel, Switch } from '@mui/material';
 import "./CoachingCardList.css"
+// FILTER BOILERPLATE START: 
 // Outside of the function, define some constants
 // (this is so it doesn't recalculate every time CoachingJobList component
 // is re-rendered. It is going to be constant!) 
-	// First, create an object to map the filter options:
+// First, create an object to map the filter options:
 const FILTER_MAP = {
 	All: () => true,
 	Ski: (gig) => gig.ski_or_snow === "Ski",
 	Snowboard: (gig) => gig.ski_or_snow === "Snowboard"
 }
 // Then use Object.keys() method to collect an array of the filter names:
-const FILTER_NAMES = Object.keys(FILTER_MAP);
-
-// component function START: 
+const FILTER_NAMES = Object.keys(FILTER_MAP); // FILTER BOILERPLATE END
+ 
 function CoachingJobList() {
 	const dispatch = useDispatch();
 	const gigs = useSelector((store) => store.gigs);
@@ -33,22 +32,6 @@ function CoachingJobList() {
 		/>
 	));
 
-	// const [filters, setFilters] = useState({
-	// 	skiFilter: false,
-	// 	snowboardFilter: false
-	// })
-
-	// need a function to handle the toggle:
-	// using spread operator so state isn't mutated and can update one key/value at a time
-	// const handleToggle = (filterName) => {
-	// 	const newFilters = {
-	// 		...filters,
-	// 		[filterName]: !filters[filterName]
-	// 	}
-	// 	setFilters(newFilters);
-	// 	console.log('Current state:', newFilters);
-	// }
-
 	//this starts the dispatch to begin our flow - this will reload our side effect whenever the dispatch is changed
 	useEffect(() => {
 		dispatch({ type: 'FETCH_GIGS' });
@@ -63,51 +46,24 @@ function CoachingJobList() {
 	return (
 		<>
 			<h1>Avaliable Gigs</h1>
-			<h2>Search Filters:</h2>
-			{filterList}
-			{/* <FormGroup>
-				<FormControlLabel
-					control={
-						<Switch
-							checked={filters.skiFilter}
-							onChange={() => handleToggle('skiFilter')}
-						/>
-					}
-					label="Ski"
-				/>
-				<FormControlLabel
-					control={
-						<Switch
-							checked={filters.snowboardFilter}
-							onChange={() => handleToggle('snowboardFilter')}
-						/>
-					}
-					label="Snowboard"
-				/>
-				<FormControlLabel
-					control={
-						<Switch
-							checked={filters.uncertifiedFilter}
-							onChange={() => handleToggle('uncertifiedFilter')}
-						/>
-					}
-					label="Uncertified"
-				/>
-			</FormGroup> */}
+			<div className="filter-container">
+				<h2 className="filter-child">Search Filters:</h2>
+				<span className="filter-child">{filterList}</span>
+			</div>
 
 			<div className='cardContainer'>
 				{gigs
-				.filter(FILTER_MAP[filter])
-				.map((gig, index) => {
-					return (
-						<CoachingJobCard
-							id={gig.id}
-							key={index}
-							gig={gig}
-							convertDateFormat={convertDateFormat}
-						/>
-					)
-				})}
+					.filter(FILTER_MAP[filter])
+					.map((gig, index) => {
+						return (
+							<CoachingJobCard
+								id={gig.id}
+								key={index}
+								gig={gig}
+								convertDateFormat={convertDateFormat}
+							/>
+						)
+					})}
 			</div>
 		</>
 	);
