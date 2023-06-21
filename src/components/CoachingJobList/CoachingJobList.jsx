@@ -7,6 +7,7 @@ import "./CoachingCardList.css"
 function CoachingJobList() {
 	const dispatch = useDispatch();
 	const gigs = useSelector((store) => store.gigs);
+	console.log(gigs);
 	const [filters, setFilters] = useState({
 		skiFilter: false,
 		snowboardFilter: false,

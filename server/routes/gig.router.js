@@ -85,6 +85,7 @@ router.get('/available', rejectUnauthenticated, (req, res) => {
 	pool
 		.query(sqlQuery)
 		.then((dbRes) => {
+			console.log(dbRes.rows);
 			// console.log('GET results for available gigs:', dbRes.rows);
 			res.send(dbRes.rows);
 		})
