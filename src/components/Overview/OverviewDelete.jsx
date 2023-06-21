@@ -29,7 +29,7 @@ function OverviewDelete({ onClick }) {
         '&:hover': {
           backgroundColor: '#de5c75',
         },
-        color: 'black',
+        color: 'white',
       }}
       onClick={handleDeleteClick}
     >

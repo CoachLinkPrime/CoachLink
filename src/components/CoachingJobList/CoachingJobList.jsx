@@ -38,6 +38,7 @@ function CoachingJobList() {
 	return (
 		<>
 			<h1>Avaliable Gigs</h1>
+			<span className='filterContainer'>
 			<h2>Search Filters:</h2>
 			<FormGroup>
 				<FormControlLabel
@@ -68,6 +69,7 @@ function CoachingJobList() {
 					label="Uncertified"
 				/>
 			</FormGroup>
+			</span>
 
 			<div className='cardContainer'>
 				{gigs.map((gig, index) => {

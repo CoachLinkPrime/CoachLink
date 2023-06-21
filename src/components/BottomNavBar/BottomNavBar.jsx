@@ -13,11 +13,11 @@ function BottomNavBar() {
     };
 
     return (
-        <div className="bottom-nav">
+        <div className="bottom-nav" >
             {/* If no user is logged in, show these links */}
             {!user.id && (
                 <>
-                    <Link className="nav-bot-link" to="/login">
+                    <Link className="nav-bot-link" to="/login" >
                         Login
                     </Link>
                     <button className="back-button" onClick={goBack}>
