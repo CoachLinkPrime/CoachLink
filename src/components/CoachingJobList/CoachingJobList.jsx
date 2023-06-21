@@ -13,7 +13,7 @@ const FILTER_MAP = {
 	Ski: (gig) => gig.ski_or_snow === "Ski",
 	Snowboard: (gig) => gig.ski_or_snow === "Snowboard"
 }
-// use Object.keys() method to collect an array of the filter names:
+// Then use Object.keys() method to collect an array of the filter names:
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 // component function START: 
@@ -96,9 +96,12 @@ function CoachingJobList() {
 			</FormGroup> */}
 
 			<div className='cardContainer'>
-				{gigs.map((gig, index) => {
+				{gigs
+				.filter(FILTER_MAP[filter])
+				.map((gig, index) => {
 					return (
 						<CoachingJobCard
+							id={gig.id}
 							key={index}
 							gig={gig}
 							convertDateFormat={convertDateFormat}
