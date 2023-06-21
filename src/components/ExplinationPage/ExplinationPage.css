@@ -11,7 +11,7 @@
     
   }
   .exp-container {
-    background-image: url("/Users/brycemorries/Aprime/prime/CoachLink/public/images/trianglify.png");
+    background-image: url("../../../public/images/trianglify.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
