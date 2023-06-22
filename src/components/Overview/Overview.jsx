@@ -25,7 +25,7 @@ function Overview() {
 
     return (
         <div className='overview'>
-            <h1>Overview</h1>
+            {/* <h1>Overview</h1> */}
             <h2>Upcoming Gigs</h2>
             {upcomingGigs.map(({ id, title, date_for_gig }) => (
                 <OverviewCard

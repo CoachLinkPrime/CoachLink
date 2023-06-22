@@ -5,12 +5,16 @@
     color: white;
     text-shadow: -2px 0 black, 0 2px black,2px 0 black, 0 -2px black;
     font-size: 40px;
+    margin-left: 10px;
     position: relative;
+    top: 15px;
 }
 
 .logo {
     float: center;
     width: 20%;
+    height: 40px;
+    padding-top: 10px;
   }
 
   .header {
@@ -18,7 +22,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 999;
+    height: 60px;
     
     display: flex;
     align-items: center;
@@ -30,7 +34,7 @@
   }
 
   .header-container {
-    max-width: 960px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
