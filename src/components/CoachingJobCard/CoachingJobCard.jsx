@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Box from '@mui/material/Box';
@@ -6,12 +7,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Collapse from '@mui/material/Collapse';
 
 import CoachingJobApply from './CoachingJobApply';
 
 function CoachingJobCard({ gig, convertDateFormat }) {
+
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const [expanded, setExpanded] = useState(false);
 
 	const handleApply = () => {
 		dispatch({
@@ -20,6 +24,10 @@ function CoachingJobCard({ gig, convertDateFormat }) {
 		});
 		history.push('/overview');
 	};
+
+	const toggleExpand = () => {
+		setExpanded(!expanded);
+	  };
 
 	return (
 		// <Box border={3} sx={{ borderRadius: '8px', m: 2 }}>
@@ -32,7 +40,12 @@ function CoachingJobCard({ gig, convertDateFormat }) {
 				}}>
 				<CardContent>
 					<Typography variant='h4'>{gig.title}</Typography>
-					<Typography variant='h5'>{gig.description}</Typography>
+					<Collapse in={expanded} timeout="auto" unmountOnExit>
+					<Typography variant='h6'>{gig.description}</Typography>
+					</Collapse>
+					<Button onClick={toggleExpand}>
+          			{expanded ? 'Collapse Description' : 'Expand Description'}
+        			</Button>
 					<Typography variant='h6'>
 						Day Of Gig: {convertDateFormat(gig.date_for_gig)},{' '}
 						{gig.time_for_gig}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProfilePage.css';
+import { Button, ButtonGroup } from '@mui/material';
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -343,8 +344,29 @@ function ProfilePage() {
                                 </tr>
                             </table>
                         </div>
-                        <button onClick={handleSaveClick}>Save</button>
-                        <button onClick={handleCancel}>cancel</button>
+                        
+                        <ButtonGroup sx={{ mt: 2 }}>
+                        <Button variant="contained"  sx={{
+                        backgroundColor: '#7EBBF1',
+                        '&:hover': {
+                        backgroundColor: '#C6E5F3',
+                        color: 'black'
+                        },
+                        color: 'white'
+                        }}onClick={handleSaveClick}>
+                            Save
+                        </Button>
+                        <Button variant="contained"  sx={{
+                        backgroundColor: '#7EBBF1',
+                        '&:hover': {
+                        backgroundColor: '#C6E5F3',
+                        color: 'black'
+                        },
+                        color: 'white'
+                        }}onClick={handleCancel}>
+                            cancel
+                        </Button>
+                        </ButtonGroup>
                     </>
                 ) : (
                     <>
@@ -356,9 +378,19 @@ function ProfilePage() {
                         <p>Coach Levels: {profile.coach_level}</p>
                         <p>Years of Experience: {profile.years_of_experience}</p>
                         <p>Disciplines: {profile.activity_type}</p>
-                        <button onClick={handleEditClick}>Edit</button>
-                    </>
-                )}
+
+                        <Button variant="contained"  sx={{
+                        backgroundColor: '#7EBBF1',
+                        '&:hover': {
+                        backgroundColor: '#C6E5F3',
+                        color: 'black'
+                        },
+                        color: 'white'
+                        }}onClick={handleEditClick}>
+                            Edit
+                        </Button>
+                            </>
+                        )}
             </div>
         </>
     );
