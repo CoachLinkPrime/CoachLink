@@ -14,47 +14,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 	res.send(req.user);
 });
 
-// This GET route fetches the profile information
-router.get('/profile', rejectUnauthenticated, (req, res) => {
-	let sqlQuery = `
-	SELECT username, phone_number, email, description, name, years_of_experience, coach_level, activity_type, ski_or_snow
-	FROM "user"
-	WHERE id=($1);
-	`
-	let sqlValues = [req.user.id];
-
-	pool.query(sqlQuery, sqlValues)
-		.then((dbRes) => {
-			res.send(dbRes.rows);
-		}).catch((dbErr) => {
-			console.log('ERROR fetching profile data', dbErr);
-			res.sendStatus(500);
-		});
-});
-
-// This PUT route updates the profile information
-router.put('/profile/edit', rejectUnauthenticated, (req, res) => {
-	const { name, email, phone_number, description, years_of_experience, coach_level, activity_type, ski_or_snow} = req.body;
-	const userId = req.user.id;
-	let sqlQuery = `
-    UPDATE "user"
-    SET name = $1, email = $2, phone_number = $3, description = $4, years_of_experience = $6, coach_level = $7, activity_type = $8, ski_or_snow = $9
-    WHERE id = $5
-    `
-	let sqlValues = [name, email, phone_number, description, userId, years_of_experience, coach_level, activity_type, ski_or_snow];
-
-	pool.query(sqlQuery, sqlValues)
-		.then(() => {
-			res.sendStatus(200);
-		})
-		.catch((error) => {
-			console.log('Error updating profile', error);
-			res.sendStatus(500);
-		});
-});
-
-
-
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted

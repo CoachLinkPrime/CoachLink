@@ -11,8 +11,7 @@ import Collapse from '@mui/material/Collapse';
 
 import CoachingJobApply from './CoachingJobApply';
 
-function CoachingJobCard({ gig, convertDateFormat }) {
-
+function CoachingJobCard({ gig, convertDateFormat, cardType }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [expanded, setExpanded] = useState(false);
@@ -25,9 +24,23 @@ function CoachingJobCard({ gig, convertDateFormat }) {
 		history.push('/overview');
 	};
 
-	const toggleExpand = () => {
-		setExpanded(!expanded);
-	  };
+	function cardTypeRender() {
+		console.log(cardType);
+		if (cardType === true) {
+			return (
+				<>
+					<Button variant='contained'>Edit</Button>
+					<Button variant='contained'>Delete</Button>
+				</>
+			);
+		} else {
+			return (
+				<Button variant='contained' onClick={handleApply}>
+					Apply
+				</Button>
+			);
+		}
+	}
 
 	return (
 		// <Box border={3} sx={{ borderRadius: '8px', m: 2 }}>
@@ -43,9 +56,6 @@ function CoachingJobCard({ gig, convertDateFormat }) {
 					<Collapse in={expanded} timeout="auto" unmountOnExit>
 					<Typography variant='h6'>{gig.description}</Typography>
 					</Collapse>
-					<Button onClick={toggleExpand}>
-          			{expanded ? 'Collapse Description' : 'Expand Description'}
-        			</Button>
 					<Typography variant='h6'>
 						Day Of Gig: {convertDateFormat(gig.date_for_gig)},{' '}
 						{gig.time_for_gig}
@@ -56,7 +66,7 @@ function CoachingJobCard({ gig, convertDateFormat }) {
 					<Typography>Looking for: {gig.coach_level}</Typography>
 					<Typography>Ski Resort: {gig.location}</Typography>
 					<Typography>Will Pay: ${gig.price}</Typography>
-					<CoachingJobApply onClick={() => handleApply(gig.id)}/>
+					{cardTypeRender()}
 				</CardContent>
 			</Card>
 		// </Box>

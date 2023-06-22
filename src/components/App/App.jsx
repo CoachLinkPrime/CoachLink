@@ -78,25 +78,6 @@ function App() {
 						<InfoPage />
 					</ProtectedRoute>
 
-					<ProtectedRoute exact path='/ineedacoach'>
-
-						<CreateGigForm />
-					</ProtectedRoute>
-
-					<ProtectedRoute
-						// logged in shows Overview else shows LoginPage
-						exact
-						path='/overview'>
-						<Overview />
-					</ProtectedRoute>
-					<ProtectedRoute
-						// logged in shows InfoPage else shows LoginPage
-						exact
-						path="/profile"
-					>
-						<ProfilePage />
-					</ProtectedRoute>
-
 					<Route exact path='/login'>
 						{user.id ? (
 							// If the user is already logged in,
@@ -147,8 +128,7 @@ function App() {
 						<h1>404</h1>
 					</Route>
 				</Switch>
-				{user.id && <Footer />}
-				{user.id && <BottomNavBar />}
+				<Footer />
 			</div>
 		</Router>
 	);
