@@ -24,6 +24,10 @@ function CoachingJobCard({ gig, convertDateFormat, cardType }) {
 		history.push('/overview');
 	};
 
+	const toggleExpand = () => {
+		setExpanded(!expanded);
+	};
+
 	function cardTypeRender() {
 		console.log(cardType);
 		if (cardType === true) {
@@ -35,40 +39,42 @@ function CoachingJobCard({ gig, convertDateFormat, cardType }) {
 			);
 		} else {
 			return (
-				<Button variant='contained' onClick={handleApply}>
-					Apply
-				</Button>
+				<CoachingJobApply onClick={() => handleApply(gig.id)}/>
 			);
 		}
 	}
 
 	return (
 		// <Box border={3} sx={{ borderRadius: '8px', m: 2 }}>
-			<Card variant='outlined' sx={{
+		<Card
+			variant='outlined'
+			sx={{
 				border: '2.5px solid black',
 				maxWidth: { xs: 300, sm: 400, md: 500 },
 				minWidth: 300,
 				margin: 'auto',
-				marginBottom: '1rem'
-				}}>
-				<CardContent>
-					<Typography variant='h4'>{gig.title}</Typography>
-					<Collapse in={expanded} timeout="auto" unmountOnExit>
+				marginBottom: '1rem',
+			}}>
+			<CardContent>
+				<Typography variant='h4'>{gig.title}</Typography>
+				<Collapse in={expanded} timeout='auto' unmountOnExit>
 					<Typography variant='h6'>{gig.description}</Typography>
-					</Collapse>
-					<Typography variant='h6'>
-						Day Of Gig: {convertDateFormat(gig.date_for_gig)},{' '}
-						{gig.time_for_gig}
-					</Typography>
-					<Typography variant='body1'>
-						Activity Type: {gig.ski_or_snow} instructor, {gig.activity_type}
-					</Typography>
-					<Typography>Looking for: {gig.coach_level}</Typography>
-					<Typography>Ski Resort: {gig.location}</Typography>
-					<Typography>Will Pay: ${gig.price}</Typography>
-					{cardTypeRender()}
-				</CardContent>
-			</Card>
+				</Collapse>
+				<Button onClick={toggleExpand}>
+					{expanded ? 'Collapse Description' : 'Expand Description'}
+				</Button>
+				<Typography variant='h6'>
+					Day Of Gig: {convertDateFormat(gig.date_for_gig)}, {gig.time_for_gig}
+				</Typography>
+				<Typography variant='body1'>
+					Activity Type: {gig.ski_or_snow} instructor, {gig.activity_type}
+				</Typography>
+				<Typography>Looking for: {gig.coach_level}</Typography>
+				<Typography>Ski Resort: {gig.location}</Typography>
+				<Typography>Will Pay: ${gig.price}</Typography>
+				{cardTypeRender()}
+			</CardContent>
+		</Card>
 		// </Box>
 	);
 }

@@ -25,9 +25,9 @@ function OverviewCard({
 	function condtionallyRenderFinishButton() {
 		if (upcomingGigStatus === true) {
 			return (
-			<Button variant='contained' onClick={() => handleFinish(id)}>
-				Finished Gig
-			</Button>
+				<Button variant='contained' onClick={() => handleFinish(id)}>
+					Finished Gig
+				</Button>
 			);
 		}
 	}
