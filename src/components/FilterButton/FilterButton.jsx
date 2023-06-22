@@ -1,9 +1,11 @@
  import './FilterButton.css'
  import Button from '@mui/material/Button';
+ import ButtonGroup from '@mui/material/ButtonGroup';
 
  
  export default function FilterButton(props) {
   return (
+    <ButtonGroup>
     <Button
     sx={{
       backgroundColor: '#7EBBF1',
@@ -20,5 +22,6 @@
       <span>{props.name}</span>
       <span className="visually-hidden"> gigs</span>
     </Button>
+    </ButtonGroup>
   )
 }

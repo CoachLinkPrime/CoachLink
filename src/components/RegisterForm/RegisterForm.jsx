@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './RegisterForm.css'
-import { InputLabel, TextField, Input } from '@mui/material';
+import { InputLabel, TextField, Input, Button } from '@mui/material';
 
 function RegisterForm() {
 
@@ -84,7 +84,16 @@ function RegisterForm() {
           />
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Create" />
+      <Button variant="contained" sx={{
+        backgroundColor: '#7EBBF1',
+        '&:hover': {
+        backgroundColor: '#C6E5F3',
+        color: 'black'
+        },
+        color: 'white'
+        }} type="submit">
+        Create
+      </Button>
       </div>
     </form>
   );

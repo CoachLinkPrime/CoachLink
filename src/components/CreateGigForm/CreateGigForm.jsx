@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Container, FilledInput, InputLabel, Select, MenuItem, InputAdornment, Input } from '@mui/material';
+import { Container, FilledInput, InputLabel, Select, MenuItem, InputAdornment, Input, Button } from '@mui/material';
 import './CreateGigForm.css'
 
 function CreateGigForm() {
@@ -59,7 +59,7 @@ function CreateGigForm() {
     return(
        <>
        <Container>
-       <h3>Lets get started!</h3>
+       <h3>Gig Details</h3>
        <form>
        <div>
         <InputLabel>
@@ -439,9 +439,18 @@ function CreateGigForm() {
             </textarea>
         </div>
 
-        <div>
-            <button onClick={addGig}>Publish</button>
-        </div>
+        <Button variant="contained" sx={{
+        backgroundColor: '#7EBBF1',
+        '&:hover': {
+        backgroundColor: '#C6E5F3',
+        color: 'black'
+        },
+        color: 'white'
+        }} 
+        onClick={addGig}>
+            Publish
+        </Button>
+        
         </form>
         </Container>
        </> 

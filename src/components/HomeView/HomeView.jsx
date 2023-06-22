@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './HomeView.css';
 import BottomNavBar from '../BottomNavBar/BottomNavBar';
+import Button from '@mui/material/Button';
 
 function HomeView() {
 	const history = useHistory();
@@ -23,23 +24,45 @@ function HomeView() {
 		<>
 			{/* How can we handle on clicks in this page?!? */}
 			<h2>Hello, {user.username}!</h2>
-			<div className='card' onClick={toGigs}>
+			<div className='card'>
 				<img
 					className='pic'
 					src='/images/snowboard_coach.jpeg'
 					alt='snowboard coach'
 				/>
+				<Button variant="contained"  sx={{
+				backgroundColor: '#7EBBF1',
+				'&:hover': {
+				backgroundColor: '#C6E5F3',
+				color: 'black'
+				},
+				color: 'white'
+				}}
+				onClick={toGigs}>
+
 				<h4>Looking for a gig</h4>
-				<p>Click here to find available gigs</p>
+				</Button>
+				<p>This is for coaches/instructors.</p>
 			</div>
-			<div className='card' onClick={addGigs}>
+			
+			<div className='card'>
 				<img
 					className='picture'
 					src='/images/snowboard_dudes.jpeg'
 					alt='snowboard dudes'
 				/>
+				<Button variant="contained"  sx={{
+				backgroundColor: '#7EBBF1',
+				'&:hover': {
+				backgroundColor: '#C6E5F3',
+				color: 'black'
+				},
+				color: 'white'
+				}}
+				onClick={addGigs}>
 				<h4>Looking for a coach</h4>
-				<p>Click here to create a gig for industry professionals to apply</p>
+				</Button>
+				<p>This is for team/club directors.</p>
 			</div>
 			
 		</>
