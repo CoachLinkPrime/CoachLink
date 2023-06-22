@@ -59,5 +59,42 @@
   table {
     margin-top: 1em;
   }
+/* 
+  .border {
+    border: solid;
+    margin: 1em;
 
-  
+  }  */
+
+  .boxTwo {
+    display: block;
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 11px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .boxTwo input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .boxTwo input:checked ~ .button:after {
+    display: block;
+  }
+
+  .boxTwo .button:after {
+    top: 4px;
+    left: 4px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: black;
+  }

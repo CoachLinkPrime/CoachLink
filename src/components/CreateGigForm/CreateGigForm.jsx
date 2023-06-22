@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Container, TextField, FilledInput, InputLabel, Select, MenuItem, InputAdornment, Input } from '@mui/material';
+import { Container, TextField, InputLabel, Select, MenuItem, InputAdornment, Input, OutlinedInput, FormControl } from '@mui/material';
 import './CreateGigForm.css'
 
 function CreateGigForm() {
@@ -65,6 +65,7 @@ function CreateGigForm() {
         <div>
         <TextField
         margin='dense'
+        required
         label= 'Club Name'
         placeholder='Club Name'
         size='small'
@@ -75,6 +76,7 @@ function CreateGigForm() {
         </div>
         <div>
         <p>What are you looking for?</p>
+        <div className='border'>
         <table>
         <tr>
             <td>
@@ -200,11 +202,15 @@ function CreateGigForm() {
         </tr>
        </table>
        </div>
+       </div>
        <div>
+        <p>Where?</p>
+        <div className='border'>
+        <FormControl fullWidth requried sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id='location'>
-                Location:
+                Location
             </InputLabel>
-            <Select labelId='location' label= "--Where is your club--" onChange={(event) => setLocation(event.target.value)}>
+            <Select labelId='location' label= "Location" onChange={(event) => setLocation(event.target.value)}>
                 <MenuItem value='Lutsen Mountains'>Lutsen Mountains</MenuItem>
                 <MenuItem value='Spirit Mountain'>Spirit Mountain</MenuItem>
                 <MenuItem value='Giants Ridge'>Giants Ridge</MenuItem>
@@ -220,19 +226,21 @@ function CreateGigForm() {
                 <MenuItem value='Buck Hill Ski Area'>Buck Hill Ski Area</MenuItem>
                 <MenuItem value='Trollhaugen'>Trollhaugen</MenuItem>
                 <MenuItem value='Granite Peak'>Granite Peak</MenuItem>
-            </Select>  
+            </Select> 
+            </FormControl> 
+        </div>
        </div>
         <div>
         <p>When?</p>
-       <div>
+       <div className='border'>
         <Input
         size='small'
         type='date'
         value={date}
         onChange={(event) => setDate(event.target.value)}
         />
-       </div>
        <div>
+       
         <Input
         placeholder='Time'
         type='time'
@@ -243,26 +251,44 @@ function CreateGigForm() {
         <Input
         type='time'
         size='small'
+        margin='dense'
         value={timeTwo}
         onChange={(event) => setTimeTwo(event.target.value)}
         />
        </div>
        </div>
+       </div>
        <div>
-        <TextField
-        placeholder='Price'
+        <p>How much are you offering?</p>
+        <div className='border'>
+        <FormControl>
+        <InputLabel>Price</InputLabel>
+        <OutlinedInput
         size='small'
+        margin='dense'
         type='number'
         label='Price'
         startAdornment={<InputAdornment position='start'>$</InputAdornment>}
         value={price}
         onChange={(event) => setPrice(event.target.value)}
         />
+        </FormControl>
+        </div>
        </div>
-       <div>
+       
             <div>
             <p>Qualifications (optional)</p>
-            <p>None</p>
+            <div className='border'>
+            <label className='boxTwo'>
+             Uncertified
+            <input
+                type = 'radio'
+                value = 'Uncertified'
+                name = 'level'
+                onChange={(event) => setLevel(event.target.value)}
+                />
+            <span className='button'></span>
+            </label>
             <TextField
             size='small'
             placeholder='Years of Experience'
@@ -271,8 +297,6 @@ function CreateGigForm() {
             value={years}
             onChange={(event) => setYears(event.target.value)}
             />
-            </div>
-        
             <p>Instructor (PSIA/AASI)</p>
              <label className = 'box'>
                     Level 1  
@@ -313,8 +337,7 @@ function CreateGigForm() {
                 onChange={(event) => setLevel(event.target.value)}
                 />
                 <span className='button'></span>
-                </label>
-                
+                </label>          
             <div>
             <p>Coach (USSA)</p>
                 <label className = 'box'>
@@ -358,10 +381,11 @@ function CreateGigForm() {
                 <span className='button'></span>
                 </label>
                 </div>
+                </div>
         </div>
         <div>
             <label>
-                Description: 
+                Description (optional)
             </label>
             <textarea
             rows='10'
@@ -371,7 +395,6 @@ function CreateGigForm() {
             >
             </textarea>
         </div>
-
         <div>
             <button onClick={addGig}>Publish</button>
         </div>
