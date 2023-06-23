@@ -22,6 +22,8 @@ function CreateGigForm() {
     const [activity, setActivity] = useState('');
     const [description, setDescription] = useState('');
 
+    console.log('years', years, 'price', price);
+
 
     // This will create the coach level combining the type and level of coach
     const coachLevel = (type + " " + level);
@@ -270,12 +272,12 @@ function CreateGigForm() {
         label='Price'
         startAdornment={<InputAdornment position='start'>$</InputAdornment>}
         value={price}
-        onChange={(event) => setPrice(event.target.value)}
+        onChange={(event) => setPrice(Number(event.target.value))}
         />
         </FormControl>
         </div>
        </div>
-       
+
             <div>
             <p>Qualifications (optional)</p>
             <div className='border'>
@@ -295,7 +297,7 @@ function CreateGigForm() {
             label='Years of Experience'
             type='number'
             value={years}
-            onChange={(event) => setYears(event.target.value)}
+            onChange={(event) => setYears(Number(event.target.value))}
             />
             <p>Instructor (PSIA/AASI)</p>
              <label className = 'box'>

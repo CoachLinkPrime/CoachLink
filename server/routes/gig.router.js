@@ -110,6 +110,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 	const price = req.body.price;
 	const avaliablity = true;
 
+	// console.log(years, price);
+
 	// console.log('years', years);
 	// console.log('date', date);
 
