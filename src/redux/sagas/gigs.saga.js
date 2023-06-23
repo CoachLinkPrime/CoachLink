@@ -22,6 +22,15 @@ function* fetchCompletedGigs() {
 	}
 }
 
+function* fetchPendingGigs() {
+	try {
+		const response = yield axios.get('/api/gig/pending');
+		yield put({ type: 'SET_PENDING_GIGS', payload: response.data });
+	} catch {
+		console.log('error with pendingGigs');
+	}
+}
+
 // call to database for upcoming gigs based on user's id
 function* fetchUpcomingGigs() {
 	try {
@@ -47,7 +56,9 @@ function* deleteGig(action) {
 	try {
 		console.log('In saga deleteGig, got the request:', action.payload);
 		yield axios.delete(`api/gig/${action.payload}`);
+		yield put({ type: 'FETCH_PENDING_GIGS' });
 		yield put({ type: 'FETCH_UPCOMING_GIGS' });
+		yield put({ type: 'FETCH_COMPLETED_GIGS' });
 	} catch {
 		console.log('Could not connect with server in deleteGig in saga');
 	}
@@ -57,8 +68,33 @@ function* updateGigWithCoach(action) {
 	try {
 		yield axios.put(`api/gig/updateGig`, action.payload);
 		yield put({ type: 'FETCH_GIGS' });
+		yield put({ type: 'FETCH_PENDING_GIGS' });
+		yield put({ type: 'FETCH_UPCOMING_GIGS' });
+		yield put({ type: 'FETCH_COMPLETED_GIGS' });
 	} catch {
 		console.log('you are actually kinda nice');
+	}
+}
+
+function* updatePendingGigs(action) {
+	try {
+		yield axios.put(`api/gig/updatePendingGigs`, action.payload);
+		yield put({ type: 'FETCH_PENDING_GIGS' });
+		yield put({ type: 'FETCH_UPCOMING_GIGS' });
+		yield put({ type: 'FETCH_COMPLETED_GIGS' });
+	} catch {
+		console.log('failure on updatePendingGig');
+	}
+}
+
+function* updateUpcomingGig(action) {
+	try {
+		yield axios.put(`api/gig/updateUpcomingGig`, action.payload);
+		yield put({ type: 'FETCH_PENDING_GIGS' });
+		yield put({ type: 'FETCH_UPCOMING_GIGS' });
+		yield put({ type: 'FETCH_COMPLETED_GIGS' });
+	} catch {
+		console.log('failure on updatePendingGig');
 	}
 }
 
@@ -69,6 +105,9 @@ function* gigsSaga() {
 		yield takeLatest('POST_GIG', postGigs);
 	yield takeLatest('DELETE_GIG', deleteGig);
 	yield takeLatest('UPDATE_GIG_WITH_COACH', updateGigWithCoach);
+	yield takeLatest('FETCH_PENDING_GIGS', fetchPendingGigs);
+	yield takeLatest('UPDATE_PENDING_GIG', updatePendingGigs);
+	yield takeLatest('UPDATE_UPCOMING_GIG', updateUpcomingGig)
 }
 
 export default gigsSaga;

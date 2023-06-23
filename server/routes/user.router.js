@@ -13,7 +13,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 	// Send back user object from the session (previously queried from the database)
 	res.send(req.user);
 });
-
 // This GET route fetches the profile information
 router.get('/profile', rejectUnauthenticated, (req, res) => {
 	let sqlQuery = `
@@ -52,7 +51,6 @@ router.put('/profile/edit', rejectUnauthenticated, (req, res) => {
 			res.sendStatus(500);
 		});
 });
-
 
 
 // Handles POST request with new user data
