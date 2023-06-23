@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Container } from '@mui/material'
+import { Container, Button } from '@mui/material'
 
 function LegalPage() {
     //this state will be used to store our legal status which will then be sent to redux
@@ -54,7 +54,17 @@ function LegalPage() {
 			/>
 			<label htmlFor='legalCheck'>I acknowledge these legal terms</label>
 			<br />
-			<button onClick={forwardButton}>Continue</button>
+			<Button sx={{
+				backgroundColor: '#7EBBF1',
+				'&:hover': {
+					backgroundColor: '#C6E5F3',
+					color: 'black'
+				},
+				color: 'white'
+				}} 
+			onClick={forwardButton}>
+				Continue
+			</Button>
 			</Container>
 		</>
 	);

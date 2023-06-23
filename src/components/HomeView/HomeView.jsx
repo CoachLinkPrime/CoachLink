@@ -31,7 +31,7 @@ function HomeView() {
 					alt='snowboard coach'
 				/>
 				<Button variant="contained"  sx={{
-				backgroundColor: '#7EBBF1',
+				backgroundColor: '#65b0f1',
 				'&:hover': {
 				backgroundColor: '#C6E5F3',
 				color: 'black'
@@ -52,7 +52,7 @@ function HomeView() {
 					alt='snowboard dudes'
 				/>
 				<Button variant="contained"  sx={{
-				backgroundColor: '#7EBBF1',
+				backgroundColor: '#65b0f1',
 				'&:hover': {
 				backgroundColor: '#C6E5F3',
 				color: 'black'
