@@ -143,6 +143,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 	const appliedStatus = false;
 	const acceptedStatus = false;
 
+	// console.log(years, price);
+
 	// console.log('years', years);
 	// console.log('date', date);
 
