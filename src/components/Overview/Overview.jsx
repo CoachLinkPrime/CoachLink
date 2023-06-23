@@ -35,32 +35,56 @@ function Overview() {
 		return dateObj.toDateString();
 	}
 
-    return (
-        <div className='overview'>
-            <h1>Overview</h1>
-            <h2>Upcoming Gigs</h2>
-            {upcomingGigs.map(({ id, title, date_for_gig }) => (
-                <OverviewCard
-                    key={id}
-                    id={id}
-                    title={title}
-                    date_for_gig={date_for_gig}
-                    convertDateFormat={convertDateFormat}
-                />
-            ))}
-            <br />
-            <br />
-            <h2>Completed Gigs</h2>
-            {pastGigs.map(({ id, title, date_for_gig }) => (
-                <OverviewCard
-                    key={id}
-                    id={id}
-                    title={title}
-                    date_for_gig={date_for_gig}
-                    convertDateFormat={convertDateFormat}
-                />
-            ))}
-        </div>
-    )
-};
+	function checkPendingGigsForOrgOrCoach() {
+		for (let i = 0; i < pendingGigs.length; i++) {
+			if (userID === pendingGigs[i].user_id) {
+				setUserBoolean(true);
+			} else {
+				console.log('fail');
+			}
+		}
+	}
+
+	return (
+		<div className='overview'>
+			<h1>Overview</h1>
+			<h2>Pending Gigs</h2>
+			{pendingGigs.map(({ id, title, date_for_gig }) => (
+				<OverviewCard
+					key={id}
+					id={id}
+					title={title}
+					date_for_gig={date_for_gig}
+					convertDateFormat={convertDateFormat}
+					conditionalRender={userBoolean}
+				/>
+			))}
+			<br />
+			<br />
+			<h2>Upcoming Gigs</h2>
+			{upcomingGigs.map(({ id, title, date_for_gig, accepted_status }) => (
+				<OverviewCard
+					key={id}
+					id={id}
+					title={title}
+					date_for_gig={date_for_gig}
+					convertDateFormat={convertDateFormat}
+					upcomingGigStatus={accepted_status}
+				/>
+			))}
+			<br />
+			<br />
+			<h2>Completed Gigs</h2>
+			{pastGigs.map(({ id, title, date_for_gig }) => (
+				<OverviewCard
+					key={id}
+					id={id}
+					title={title}
+					date_for_gig={date_for_gig}
+					convertDateFormat={convertDateFormat}
+				/>
+			))}
+		</div>
+	);
+}
 export default Overview;
