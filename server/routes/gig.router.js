@@ -7,11 +7,12 @@ const router = express.Router();
 
 // this GET route retrieves all of the user's accepted gigs
 // for the user to see in Overview
+
 router.get('/', rejectUnauthenticated, (req, res) => {
 	// GET route code here
 	let sqlQuery = `
     SELECT * FROM "gig"
-`;
+      WHERE "coach_user_id"=($1);`;
 
 	let sqlValues = [req.user.id];
 
@@ -33,9 +34,36 @@ router.get('/past', rejectUnauthenticated, (req, res) => {
 	let sqlQuery = `
     SELECT * FROM "gig"
       WHERE "coach_user_id"=($1)
-        AND "status"=false
+        AND "finished_status"=true
       OR "user_id"=($1)
-        AND "status"=false;`;
+        AND "finished_status"=true;`;
+
+	let sqlValues = [req.user.id];
+
+	pool
+		.query(sqlQuery, sqlValues)
+		.then((dbRes) => {
+			// console.log('results from past gigs GET route:', dbRes.rows);
+			res.send(dbRes.rows);
+		})
+		.catch((dbErr) => {
+			console.log('error with past gigs GET route:', dbErr);
+			res.sendStatus(500);
+		});
+});
+
+router.get('/pending', rejectUnauthenticated, (req, res) => {
+	// GET route code here
+	let sqlQuery = `
+    SELECT * FROM "gig"
+      WHERE "coach_user_id"=($1)
+        AND "applied_status"=true
+				AND "accepted_status"=false
+				AND "finished_status"=false
+      OR "user_id"=($1)
+        AND "applied_status"=true
+				AND "accepted_status"=false
+				AND "finished_status"=false;	`;
 
 	let sqlValues = [req.user.id];
 
@@ -57,7 +85,11 @@ router.get('/upcoming', rejectUnauthenticated, (req, res) => {
 	let sqlQuery = `
     SELECT * FROM "gig"
       WHERE "coach_user_id"=$1
-      AND "status"=true;`;
+				AND "accepted_status"=true
+				AND "finished_status"=false 
+			OR "user_id"=$1
+      	AND "accepted_status"=true
+				AND "finished_status"=false;`;
 
 	let sqlValues = [req.user.id];
 
@@ -78,14 +110,13 @@ router.get('/upcoming', rejectUnauthenticated, (req, res) => {
 router.get('/available', rejectUnauthenticated, (req, res) => {
 	let sqlQuery = `
   SELECT * FROM "gig"
-    WHERE "status"=true
+    WHERE "finished_status"=false
 		AND "coach_user_id" is null
 		`;
 
 	pool
 		.query(sqlQuery)
 		.then((dbRes) => {
-			console.log(dbRes.rows);
 			// console.log('GET results for available gigs:', dbRes.rows);
 			res.send(dbRes.rows);
 		})
@@ -108,7 +139,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 	const ski_or_snow = req.body.ski_or_snow;
 	const location = req.body.location;
 	const price = req.body.price;
-	const avaliablity = true;
+	const finishedStatus = false;
+	const appliedStatus = false;
+	const acceptedStatus = false;
 
 	// console.log(years, price);
 
@@ -127,19 +160,20 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 		ski_or_snow,
 		location,
 		price,
-		avaliablity,
+		finishedStatus,
+		appliedStatus,
+		acceptedStatus,
 	];
 
 	const sqlQuery = `INSERT INTO "gig" ("user_id", "title",  "description", "date_for_gig", 
   "year_of_experience", "time_for_gig", "coach_level", 
-  "activity_type", "ski_or_snow", "location", "price", "status")
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
+  "activity_type", "ski_or_snow", "location", "price", "finished_status", applied_status, "accepted_status")
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
   `;
 
 	pool
 		.query(sqlQuery, sqlValues)
 		.then((dbRes) => {
-			console.log('added gig');
 			res.sendStatus(201);
 		})
 		.catch((dbErr) => {
@@ -173,25 +207,73 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 		});
 });
 
-router.put('/updateGig', rejectUnauthenticated, (req, res) => {
+router.put('/updateGig', rejectUnauthenticated, async (req, res) => {
 	let gigID = req.body.gigID;
 	let userID = req.user.id;
 
-	let sqlQuery = `
+	let sqlQuery1 = `
 	UPDATE "gig"
 	SET coach_user_id = $1
 	WHERE id = $2
 	`;
 
-	pool
-		.query(sqlQuery, [userID, gigID])
-		.then((dbRes) => {
-			res.sendStatus(200);
-		})
-		.catch((dbErr) => {
-			console.log(dbErr);
-			res.sendStatus(500);
-		});
+	let sqlQuery2 = `
+	UPDATE "gig"
+	SET applied_status=true
+	WHERE id = $1
+	`;
+
+	try {
+		await pool.query(sqlQuery1, [userID, gigID]);
+		await pool.query(sqlQuery2, [gigID]);
+		res.sendStatus(201);
+	} catch (dbErr) {
+		console.error(dbErr);
+		res.sendStatus(500);
+	}
+});
+
+router.put('/updatePendingGigs', rejectUnauthenticated, async (req, res) => {
+	let gigID = req.body.gigID;
+
+	let sqlQuery = `
+	UPDATE "gig"
+	SET accepted_status=true
+	WHERE id=$1
+	`;
+
+	try {
+		await pool.query(sqlQuery, [gigID]);
+		res.sendStatus(201);
+	} catch {
+		console.log('failure on updatingPendingGigs');
+		res.sendStatus(500);
+	}
+});
+
+router.put('/updateUpcomingGig', rejectUnauthenticated, async (req, res) => {
+	let gigID = req.body.gigID;
+
+	let sqlQuery1 = `
+	UPDATE "gig"
+	SET finished_status=true
+	WHERE id=$1
+	`;
+
+	let sqlQuery2 = `
+	UPDATE "gig"
+	SET accepted_status=false
+	WHERE id=$1
+	`;
+
+	try {
+		await pool.query(sqlQuery1, [gigID]);
+		await pool.query(sqlQuery2, [gigID]);
+		res.sendStatus(201);
+	} catch {
+		console.log('failure on updatingPendingGigs');
+		res.sendStatus(500);
+	}
 });
 
 module.exports = router;

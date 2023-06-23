@@ -8,6 +8,29 @@ h1 {
 	text-align: center;
 }
 
-/* .filterContainer {
- */
-/* } */
+.filter-container {
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.filter-child {
+	margin: 0 10px;
+	padding: 0 20px 10px;
+}
+
+h2.filter-child  {
+	font-size: 16px;
+	font-weight: normal;
+}
+
+/* the title of the Search Filter should take up full width of flex container,
+then buttons appear in next space below: */
+.filter-child:first-child {
+	width: 100%;
+}
+
+.filter-child:not(:first-child) {
+	flex: 1;
+}
