@@ -62,7 +62,6 @@ function CreateGigForm() {
        <>
        <Container>
        <h3>Gig Details</h3>
-       <h3>Gig Details</h3>
        <form>
        
         <div>
