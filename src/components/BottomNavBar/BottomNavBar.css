@@ -23,3 +23,8 @@
     cursor: pointer;
     outline: 0;
 }
+
+.nav-bot-link:hover {
+    background-color: #a4d4f9;
+    color: #000000;
+  }

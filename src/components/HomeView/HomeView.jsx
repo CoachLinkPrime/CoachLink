@@ -33,7 +33,7 @@ function HomeView() {
 				<Button
 					variant='contained'
 					sx={{
-						backgroundColor: '#7EBBF1',
+						backgroundColor: '#65b0f1',
 						'&:hover': {
 							backgroundColor: '#C6E5F3',
 							color: 'black',
@@ -44,8 +44,8 @@ function HomeView() {
 					<h4>Looking for a gig</h4>
 				</Button>
 				<p>This is for coaches/instructors.</p>
-				<h4>Coaching Jobs</h4>
-				<p>Click here to find available shifts</p>
+				{/* <h4>Coaching Jobs</h4>
+				<p>Click here to find available shifts</p> */}
 			</div>
 			<div className='card'>
 				<img
@@ -56,7 +56,7 @@ function HomeView() {
 				<Button
 					variant='contained'
 					sx={{
-						backgroundColor: '#7EBBF1',
+						backgroundColor: '#65b0f1',
 						'&:hover': {
 							backgroundColor: '#C6E5F3',
 							color: 'black',
@@ -67,12 +67,12 @@ function HomeView() {
 					<h4>Looking for a coach</h4>
 				</Button>
 				<p>This is for team/club directors.</p>
-				<h4>Looking for Coaches</h4>
-				<p>Click here to create a gig for industry professionals to apply</p>
+				{/* <h4>Looking for Coaches</h4>
+				<p>Click here to create a gig for industry professionals to apply</p> */}
 			</div>
-			<div>
+			{/* <div>
 				<LogOutButton className='btn' />
-			</div>
+			</div> */}
 		</>
 	);
 }

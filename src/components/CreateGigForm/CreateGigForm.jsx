@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Container, TextField, InputLabel, Select, MenuItem, InputAdornment, Input, Button, OutlinedInput, FormControl } from '@mui/material';
+import { Container, TextField, TextareaAutosize ,InputLabel, Select, MenuItem, InputAdornment, Input, Button, OutlinedInput, FormControl } from '@mui/material';
 import './CreateGigForm.css'
 
 function CreateGigForm() {
@@ -24,6 +24,11 @@ function CreateGigForm() {
 
     console.log('years', years, 'price', price);
 
+    const handleTitleBlur = () => {
+        if (title === '') {
+          setDescription('Prime Ski Club');
+        }
+      };
 
     // This will create the coach level combining the type and level of coach
     const coachLevel = (type + " " + level);
@@ -74,6 +79,7 @@ function CreateGigForm() {
         type='text'
         value={title}
         onChange={(event) => setTitle(event.target.value)}
+        onBlur={handleTitleBlur}
         />
         </div>
         <div>
@@ -386,16 +392,24 @@ function CreateGigForm() {
                 </div>
         </div>
         <div>
-            <label>
+            {/* <label>
                 Description (optional)
-            </label>
-            <textarea
-            rows='10'
-            cols='50'
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-            >
-            </textarea>
+            </label> */}
+            <TextareaAutosize
+                rowsMin={4}
+                margin="dense"
+                label="Description"
+                placeholder="Description"
+                size="medium"
+                type="text"
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+                onClick={() => {
+                    if (description === '') {
+                      setDescription('Are you passionate about skiing and love working with children? Our esteemed ski club is currently seeking enthusiastic ski instructors to join our team and teach young skiers between the ages of 9 and 18.');
+                    }
+                  }}
+              />
         </div>
         <Button variant="contained" sx={{
         backgroundColor: '#7EBBF1',
