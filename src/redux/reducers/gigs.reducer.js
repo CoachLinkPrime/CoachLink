@@ -36,3 +36,12 @@ export const pendingGigs = (state = [], action) => {
 			return state;
 	}
 };
+
+export const coaches = (state = [], action) => {
+	switch(action.type) {
+		case 'SET_COACHES':
+			return action.payload;
+		default:
+			return state;
+	}
+}
