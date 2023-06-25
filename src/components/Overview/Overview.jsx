@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OverviewCard from './OverviewCard.jsx';
 
 function Overview() {
+	//these are all our data sets and boiler plate for functions
 	const dispatch = useDispatch();
 	const pastGigs = useSelector((store) => store.pastGigs);
 	const upcomingGigs = useSelector((store) => store.upcomingGigs);
@@ -19,10 +20,12 @@ function Overview() {
 		dispatch({ type: 'FETCH_PENDING_GIGS' });
 	}, [dispatch]);
 
+	//this will onLoad check to see if the user is an organization or a coach
 	useEffect(() => {
 		checkPendingGigsForOrgOrCoach();
 	}, [pendingGigs]);
 
+	//this is the logic to see if the user is a coach or an organization
 	function checkPendingGigsForOrgOrCoach() {
 		for (let i = 0; i < pendingGigs.length; i++) {
 			if (userID === pendingGigs[i].user_id) {
@@ -37,6 +40,7 @@ function Overview() {
 		<div className='overview'>
 			{/* <h1>Overview</h1> */}
 			<h2>Pending Gigs</h2>
+			{/* all the information needed to build a card */}
 			{pendingGigs.map(
 				({
 					master_id,
@@ -55,7 +59,8 @@ function Overview() {
 					email,
 					phone_number,
 					accepted_status,
-					finished_status
+					finished_status,
+					time_for_gig
 				}) => (
 					<OverviewCard
 						key={master_id}
@@ -77,6 +82,7 @@ function Overview() {
 						phone_number={phone_number}
 						accepted_status={accepted_status}
 						finished_status={finished_status}
+						time_for_gig={time_for_gig}
 					/>
 				)
 			)}
@@ -101,7 +107,8 @@ function Overview() {
 					email,
 					phone_number,
 					accepted_status,
-					finished_status
+					finished_status,
+					time_for_gig
 				}) => (
 					<OverviewCard
 						key={master_id}
@@ -123,6 +130,7 @@ function Overview() {
 						phone_number={phone_number}
 						accepted_status={accepted_status}
 						finished_status={finished_status}
+						time_for_gig={time_for_gig}
 					/>
 				)
 			)}
@@ -147,7 +155,8 @@ function Overview() {
 					email,
 					phone_number,
 					accepted_status,
-					finished_status
+					finished_status,
+					time_for_gig
 				}) => (
 					<OverviewCard
 						key={master_id}
@@ -169,6 +178,7 @@ function Overview() {
 						phone_number={phone_number}
 						accepted_status={accepted_status}
 						finished_status={finished_status}
+						time_for_gig={time_for_gig}
 					/>
 				)
 			)}

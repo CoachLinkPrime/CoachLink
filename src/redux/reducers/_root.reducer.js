@@ -6,7 +6,6 @@ import {
 	getCompletedGigs,
 	upcomingGigsReducer,
 	pendingGigs,
-	coaches,
 } from './gigs.reducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -23,7 +22,6 @@ const rootReducer = combineReducers({
 	upcomingGigs: upcomingGigsReducer,
 	pendingGigs: pendingGigs,
 	profile: profileReducer,
-	coaches: coaches,
 });
 
 export default rootReducer;

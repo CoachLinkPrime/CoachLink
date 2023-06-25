@@ -47,6 +47,7 @@ function CoachingJobList() {
 		return dateObj.toDateString();
 	}
 
+	//this checks to see if you are the poster of the gig
 	function checkGigArrayForMatch() {
 		for (let i = 0; i < gigs.length; i++) {
 			if (gigs[i].user_id === userID) {
@@ -55,10 +56,12 @@ function CoachingJobList() {
 		}
 	}
 
+	//this is what makes the function fire on load
 	useEffect(() => {
 		checkGigArrayForMatch();
 	}, [gigs]);
 
+	//based on if you are the use or not you see a different view then the applicant
 	function conditionalRenderOnUserID() {
 		if (userBoolean === true) {
 			return (

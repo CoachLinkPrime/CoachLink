@@ -98,17 +98,6 @@ function* updateUpcomingGig(action) {
 	}
 }
 
-function* fetchCoachs(action) {
-	try {
-		const response = yield axios.get(
-			`api/gig/fetchSingleCoach`,
-		);
-		yield put ({ type: 'SET_COACHES', payload: response.data })
-	} catch {
-		console.log('failure to fetch single coach');
-	}
-}
-
 function* gigsSaga() {
 	yield takeLatest('FETCH_GIGS', fetchGigs),
 		yield takeLatest('FETCH_COMPLETED_GIGS', fetchCompletedGigs),
@@ -119,7 +108,6 @@ function* gigsSaga() {
 	yield takeLatest('FETCH_PENDING_GIGS', fetchPendingGigs);
 	yield takeLatest('UPDATE_PENDING_GIG', updatePendingGigs);
 	yield takeLatest('UPDATE_UPCOMING_GIG', updateUpcomingGig);
-	yield takeLatest('FETCH_COACH_DETAILS', fetchCoachs);
 }
 
 export default gigsSaga;

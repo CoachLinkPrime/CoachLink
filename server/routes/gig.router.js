@@ -30,9 +30,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // GET route for past accepted gigs based on the logged-in user's id
 router.get('/past', rejectUnauthenticated, (req, res) => {
-	// GET route code here
+	// GET route code here - this is all the data we need on a join to show the coaches on the overview page
 	let sqlQuery = `
-	SELECT "gig".id as "master_id", "gig".user_id, "gig".coach_user_id, "gig".title, "gig".description, "gig".date_applied, "gig".date_published, "gig".year_of_experience, "gig".time_for_gig, "gig".gig_coach_level, "gig".gig_activity_type, "gig".gig_ski_or_snow, "gig".location, "gig".price, "gig".finished_status, "gig".applied_status, "gig".accepted_status, "user".id, "user".username, "user".name, "user".phone_number, "user".email, "user".years_of_experience, "user".coach_level, "user".activity_type, "user".ski_or_snow, "user".date_accepted
+	SELECT "gig".id as "master_id", "gig".user_id, "gig".coach_user_id, "gig".title, "gig".description, "gig".date_applied, "gig".date_published, "gig".year_of_experience, "gig".time_for_gig, "gig".gig_coach_level, "gig".gig_activity_type, "gig".gig_ski_or_snow, "gig".location, "gig".price, "gig".finished_status, "gig".applied_status, "gig".accepted_status, "user".id, "user".username, "user".name, "user".phone_number, "user".email, "user".years_of_experience, "user".coach_level, "user".activity_type, "user".ski_or_snow, "user".date_accepted, "gig".date_for_gig
 	FROM "gig"
 	JOIN "user" ON "gig".coach_user_id="user".id
       WHERE "coach_user_id"=($1)
@@ -55,9 +55,9 @@ router.get('/past', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/pending', rejectUnauthenticated, async (req, res) => {
-	// GET route code here
+	// GET route code here - this is all the data we need on a join to show the coaches on the overview page
 	let sqlQuery = `
-	SELECT "gig".id as "master_id", "gig".user_id, "gig".coach_user_id, "gig".title, "gig".description, "gig".date_applied, "gig".date_published, "gig".year_of_experience, "gig".time_for_gig, "gig".gig_coach_level, "gig".gig_activity_type, "gig".gig_ski_or_snow, "gig".location, "gig".price, "gig".finished_status, "gig".applied_status, "gig".accepted_status, "user".id, "user".username, "user".name, "user".phone_number, "user".email, "user".years_of_experience, "user".coach_level, "user".activity_type, "user".ski_or_snow, "user".date_accepted
+	SELECT "gig".id as "master_id", "gig".user_id, "gig".coach_user_id, "gig".title, "gig".description, "gig".date_applied, "gig".date_published, "gig".year_of_experience, "gig".time_for_gig, "gig".gig_coach_level, "gig".gig_activity_type, "gig".gig_ski_or_snow, "gig".location, "gig".price, "gig".finished_status, "gig".applied_status, "gig".accepted_status, "user".id, "user".username, "user".name, "user".phone_number, "user".email, "user".years_of_experience, "user".coach_level, "user".activity_type, "user".ski_or_snow, "user".date_accepted, "gig".date_for_gig
 	FROM "gig"
 	JOIN "user" ON "gig".coach_user_id="user".id
       WHERE "coach_user_id"=($1)
@@ -82,9 +82,9 @@ router.get('/pending', rejectUnauthenticated, async (req, res) => {
 
 // GET route for upcoming gigs based on the logged-in user's id
 router.get('/upcoming', rejectUnauthenticated, (req, res) => {
-	// GET route code here
+	// GET route code here - this is all the data we need on a join to show the coaches on the overview page
 	let sqlQuery = `
-	SELECT "gig".id as "master_id", "gig".user_id, "gig".coach_user_id, "gig".title, "gig".description, "gig".date_applied, "gig".date_published, "gig".year_of_experience, "gig".time_for_gig, "gig".gig_coach_level, "gig".gig_activity_type, "gig".gig_ski_or_snow, "gig".location, "gig".price, "gig".finished_status, "gig".applied_status, "gig".accepted_status, "user".id, "user".username, "user".name, "user".phone_number, "user".email, "user".years_of_experience, "user".coach_level, "user".activity_type, "user".ski_or_snow, "user".date_accepted
+	SELECT "gig".id as "master_id", "gig".user_id, "gig".coach_user_id, "gig".title, "gig".description, "gig".date_applied, "gig".date_published, "gig".year_of_experience, "gig".time_for_gig, "gig".gig_coach_level, "gig".gig_activity_type, "gig".gig_ski_or_snow, "gig".location, "gig".price, "gig".finished_status, "gig".applied_status, "gig".accepted_status, "user".id, "user".username, "user".name, "user".phone_number, "user".email, "user".years_of_experience, "user".coach_level, "user".activity_type, "user".ski_or_snow, "user".date_accepted, "gig".date_for_gig
 	FROM "gig"
 	JOIN "user" ON "gig".coach_user_id="user".id
       WHERE "coach_user_id"=$1
