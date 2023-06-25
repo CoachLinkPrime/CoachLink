@@ -16,6 +16,7 @@ function CoachingJobCard({ gig, convertDateFormat, cardType }) {
 	const history = useHistory();
 	const [expanded, setExpanded] = useState(false);
 
+	//this handles the apply button
 	const handleApply = () => {
 		dispatch({
 			type: 'UPDATE_GIG_WITH_COACH',
@@ -23,11 +24,12 @@ function CoachingJobCard({ gig, convertDateFormat, cardType }) {
 		});
 		history.push('/overview');
 	};
-
+	//logic for expanding the card description
 	const toggleExpand = () => {
 		setExpanded(!expanded);
 	};
 
+	//based on who you are you get two different views - right now these are dead buttons and dont do anything.
 	function cardTypeRender() {
 		console.log(cardType);
 		if (cardType === true) {

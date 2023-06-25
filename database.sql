@@ -66,9 +66,9 @@ CREATE TABLE "gig" (
     "date_published" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "year_of_experience" INTEGER,
     "time_for_gig" VARCHAR (80),
-    "coach_level" VARCHAR (80),
-    "activity_type" activity_type_enum,
-    "ski_or_snow" ski_or_snow_enum,
+    "gig_coach_level" VARCHAR (80),
+    "gig_activity_type" activity_type_enum,
+    "gig_ski_or_snow" ski_or_snow_enum,
     "location" location_enum,
     "price" INTEGER,
     "finished_status" BOOLEAN,
@@ -87,7 +87,7 @@ VALUES
     ('sam789', 'pass789', 'Sam Johnson', '5555555555', 'sam@example.com', 'Freestyle specialist', true, '2023-03-10');
 
 -- Dummy data for gig
-INSERT INTO "gig" ("user_id", "coach_user_id", "title", "description", "date_for_gig", "date_applied", "year_of_experience", "time_for_gig", "coach_level", "activity_type", "ski_or_snow", "location", "price", "finished_status", "applied_status", "accepted_status")
+INSERT INTO "gig" ("user_id", "coach_user_id", "title", "description", "date_for_gig", "date_applied", "year_of_experience", "time_for_gig", "gig_coach_level", "activity_type", "ski_or_snow", "location", "price", "finished_status", "applied_status", "accepted_status")
 VALUES
 
     (1, 2, 'Ski Lesson', 'Private ski lesson for beginners', '2023-01-05', '2023-01-07', 3, '09:00:00', 'Instructor level 3', 'Alpine', 'Ski', 'Lutsen Mountains', 50, true, true, true),

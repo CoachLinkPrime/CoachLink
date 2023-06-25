@@ -107,7 +107,7 @@ function* gigsSaga() {
 	yield takeLatest('UPDATE_GIG_WITH_COACH', updateGigWithCoach);
 	yield takeLatest('FETCH_PENDING_GIGS', fetchPendingGigs);
 	yield takeLatest('UPDATE_PENDING_GIG', updatePendingGigs);
-	yield takeLatest('UPDATE_UPCOMING_GIG', updateUpcomingGig)
+	yield takeLatest('UPDATE_UPCOMING_GIG', updateUpcomingGig);
 }
 
 export default gigsSaga;

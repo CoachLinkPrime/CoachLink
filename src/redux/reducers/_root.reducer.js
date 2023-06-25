@@ -1,7 +1,12 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
-import {userReducer, profileReducer} from './user.reducer';
-import { getGigs, getCompletedGigs, upcomingGigsReducer, pendingGigs } from './gigs.reducer';
+import { userReducer, profileReducer } from './user.reducer';
+import {
+	getGigs,
+	getCompletedGigs,
+	upcomingGigsReducer,
+	pendingGigs,
+} from './gigs.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +21,7 @@ const rootReducer = combineReducers({
 	pastGigs: getCompletedGigs,
 	upcomingGigs: upcomingGigsReducer,
 	pendingGigs: pendingGigs,
-	profile: profileReducer
+	profile: profileReducer,
 });
 
 export default rootReducer;
