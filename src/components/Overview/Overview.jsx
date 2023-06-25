@@ -35,7 +35,7 @@ function Overview() {
 
 	return (
 		<div className='overview'>
-			<h1>Overview</h1>
+			{/* <h1>Overview</h1> */}
 			<h2>Pending Gigs</h2>
 			{pendingGigs.map(
 				({

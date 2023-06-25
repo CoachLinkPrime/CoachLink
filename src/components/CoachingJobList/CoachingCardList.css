@@ -34,3 +34,7 @@ then buttons appear in next space below: */
 .filter-child:not(:first-child) {
 	flex: 1;
 }
+
+body {
+	padding-top: 110px;
+}

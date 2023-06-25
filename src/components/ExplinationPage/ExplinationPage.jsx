@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import './ExplinationPage.css';
 import Footer from '../Footer/Footer';
 
+import { Button, ButtonGroup } from '@mui/material';
+
 function ExplinationPage() {
     const history = useHistory();
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -33,12 +35,42 @@ function ExplinationPage() {
                     </div>
                     <div>
                         {currentSlide > 0 && (
-                            <button onClick={handlePreviousSlide}>Previous</button>
+                            <Button variant="contained"  sx={{
+                                backgroundColor: '#65b0f1',
+                                '&:hover': {
+                                backgroundColor: '#C6E5F3',
+                                color: 'black'
+                                },
+                                color: 'white'
+                                }}
+                                onClick={handlePreviousSlide}>
+                                Previous
+                            </Button>
                         )}
                         {currentSlide < slides.length - 1 ? (
-                            <button onClick={handleNextSlide}>Next</button>
+                            <Button variant="contained"  sx={{
+                                backgroundColor: '#65b0f1',
+                                '&:hover': {
+                                backgroundColor: '#C6E5F3',
+                                color: 'black'
+                                },
+                                color: 'white'
+                                }}
+                                onClick={handleNextSlide}>
+                                    Next
+                            </Button>
                         ) : (
-                            <button onClick={handleRegister}>Create Account</button>
+                            <Button variant="contained"  sx={{
+                                backgroundColor: '#65b0f1',
+                                '&:hover': {
+                                backgroundColor: '#C6E5F3',
+                                color: 'black'
+                                },
+                                color: 'white'
+                                }} 
+                                onClick={handleRegister}>
+                                Create Account
+                            </Button>
                         )}
                     </div>
                 </div>
