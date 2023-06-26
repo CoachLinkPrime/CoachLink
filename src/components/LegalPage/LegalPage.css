@@ -1,0 +1,23 @@
+.terms-container {
+    width: 80%;
+    height: 300px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 auto;
+  }
+  
+  .terms-content {
+    margin-bottom: 20px;
+  }
+  
+  .terms-content h1 {
+    font-size: 20px;
+  }
+  
+  .terms-content p,
+  .terms-content li {
+    font-size: 14px;
+  }
+  

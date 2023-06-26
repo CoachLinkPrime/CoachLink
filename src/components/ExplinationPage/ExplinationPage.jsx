@@ -18,7 +18,7 @@ function ExplinationPage() {
     };
     const slides = [
         'Need an Instructor/Coach? Post a gig and we will connect you with locals in your area.',
-        'Need some extra cash? Want to get involved with more clubs? browse and aplly for gigs in your area.',
+        'Need some extra cash? Want to get involved with more clubs? browse and apply for gigs at your local mountains.',
         'We provide a space for local clubs and coaches to connect and fill in the gap of missed opportunities for learning and teaching',
     ];
     const handleRegister = (event) => {
