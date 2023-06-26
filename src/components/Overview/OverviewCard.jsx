@@ -8,6 +8,7 @@ import Collapse from '@mui/material/Collapse';
 import OverviewDelete from './OverviewDelete';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import Swal from 'sweetalert2';
 
 //this will be the pop out style for our modal which appears when you click on coach
 const style = {
@@ -88,21 +89,47 @@ function OverviewCard({
 
 	//this sends a dispatch when a pending gig is accepted to change it to an upcoming gig
 	const handleAccept = (gigID) => {
-		dispatch({
-			type: 'UPDATE_PENDING_GIG',
-			payload: {
-				gigID: gigID,
-			},
+		Swal.fire({
+			title: 'Are you sure?',
+			text: 'Do you want to accept this gig?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#e37da1',
+			cancelButtonColor: '#7EBBF1',
+			confirmButtonText: 'Ready to accept!',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire('You have accepted this coach for the gig!');
+				dispatch({
+					type: 'UPDATE_PENDING_GIG',
+					payload: {
+						gigID: gigID,
+					},
+				});
+			}
 		});
 	};
 
 	//this sends a dispatch that changes an upcoming gig to a finished gig
 	const handleFinish = (gigID) => {
-		dispatch({
-			type: 'UPDATE_UPCOMING_GIG',
-			payload: {
-				gigID: gigID,
-			},
+		Swal.fire({
+			title: 'Are you sure?',
+			text: 'Do you want to finish this gig?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#e37da1',
+			cancelButtonColor: '#7EBBF1',
+			confirmButtonText: 'Gig is finished!',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire('You have finished the Gig!');
+				dispatch({
+					type: 'UPDATE_UPCOMING_GIG',
+					payload: {
+						gigID: gigID,
+					},
+				});
+			}
 		});
 	};
 
@@ -111,6 +138,19 @@ function OverviewCard({
 		dispatch({
 			type: 'DELETE_GIG',
 			payload: gigID,
+		});
+		Swal.fire({
+			title: 'Are you sure?',
+			text: 'Are you sure you want to delete this gig?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#e37da1',
+			cancelButtonColor: '#7EBBF1',
+			confirmButtonText: 'Delete!',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire('you have deleted the gig');
+			}
 		});
 	};
 
