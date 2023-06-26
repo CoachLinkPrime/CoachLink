@@ -42,6 +42,7 @@ function OverviewCard({
 	accepted_status,
 	finished_status,
 	time_for_gig,
+	user_description,
 }) {
 	//these variables handle boiler plate for dispatch and boiler plate to help our modal be clicked on to show coach info
 	const dispatch = useDispatch();
@@ -169,6 +170,7 @@ function OverviewCard({
 								<Typography>Speciality: {activity_type}</Typography>
 								<Typography>Email: {email}</Typography>
 								<Typography>Phone Number: {phone_number}</Typography>
+								<Typography>Description: {user_description}</Typography>
 							</Typography>
 						</Box>
 					</Modal>
