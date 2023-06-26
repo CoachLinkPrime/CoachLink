@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CoachingJobCard from '../CoachingJobCard/CoachingJobCard';
 import FilterButton from '../FilterButton/FilterButton';
-import { FormGroup, FormControlLabel, Switch } from '@mui/material';
 import './CoachingCardList.css';
 
 // FILTER BOILERPLATE START:
@@ -12,11 +11,11 @@ import './CoachingCardList.css';
 // First, create an object to map the filter options:
 const FILTER_MAP = {
 	All: () => true,
-	Ski: (gig) => gig.ski_or_snow === 'Ski',
-	Snowboard: (gig) => gig.ski_or_snow === 'Snowboard',
+	Ski: (gig) => gig.gig_ski_or_snow === 'Ski',
+	Snowboard: (gig) => gig.gig_ski_or_snow === 'Snowboard',
 };
-
 const FILTER_NAMES = Object.keys(FILTER_MAP);
+// END FILTER BOILERPLATE
 
 function CoachingJobList() {
 	const [filter, setFilter] = useState('All');
@@ -81,7 +80,7 @@ function CoachingJobList() {
 							}
 						})}
 					</div>
-					<h1>Avaliable Gigs</h1>
+					<h1>Available Gigs</h1>
 					<div className='cardContainer'>
 						{gigs.filter(FILTER_MAP[filter]).map((gig, index) => {
 							if (userID !== gig.user_id) {
@@ -100,7 +99,7 @@ function CoachingJobList() {
 		} else {
 			return (
 				<>
-					<h1>Avaliable Gigs</h1>
+					<h1>Available Gigs</h1>
 					<div className='cardContainer'>
 						{gigs.filter(FILTER_MAP[filter]).map((gig, index) => {
 							if (userID !== gig.user_id) {

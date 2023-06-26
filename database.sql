@@ -81,20 +81,24 @@ CREATE TABLE "gig" (
 -- Dummy data for user
 INSERT INTO "user" ("username", "password", "name", "phone_number", "email", "description", "legal_status", "date_accepted")
 VALUES
-
     ('john123', 'password123', 'John Doe', '1234567890', 'john@example.com', 'Experienced coach', true, '2023-01-01'),
     ('jane456', 'pass456', 'Jane Smith', '9876543210', 'jane@example.com', 'Certified instructor', true, '2023-02-15'),
     ('sam789', 'pass789', 'Sam Johnson', '5555555555', 'sam@example.com', 'Freestyle specialist', true, '2023-03-10');
 
--- Dummy data for gig
-INSERT INTO "gig" ("user_id", "coach_user_id", "title", "description", "date_for_gig", "date_applied", "year_of_experience", "time_for_gig", "gig_coach_level", "activity_type", "ski_or_snow", "location", "price", "finished_status", "applied_status", "accepted_status")
+-- Dummy data for gigs in Overview for users 1 & 2:
+INSERT INTO "gig" ("user_id", "coach_user_id", "title", "description", "date_for_gig", "date_applied", "year_of_experience", "time_for_gig", "gig_coach_level", "gig_activity_type", "gig_ski_or_snow", "location", "price", "finished_status", "applied_status", "accepted_status")
 VALUES
+    (1, 2, 'Prime Ski Club', 'Private ski lesson for beginners', '2023-01-05', '2023-01-07', 3, '09:00:00', 'Instructor level 3', 'Alpine', 'Ski', 'Lutsen Mountains', 50, true, true, true),
+    (3, 1, 'Snowboard Club B', 'Advanced snowboard coaching session', '2023-02-10', '2023-02-12', 5, '13:00:00', 'Instructor level 4', 'Slopestyle', 'Snowboard', 'Spirit Mountain', 75, true, true, true),
+    (3, 1, 'Freestyle Club', 'Intensive freestyle training camp', '2023-03-15', '2023-03-18', 8, '10:00:00', 'Coach level 100', 'Halfpipe', 'Ski', 'Giants Ridge', 100, true, true, true);
 
-    (1, 2, 'Ski Lesson', 'Private ski lesson for beginners', '2023-01-05', '2023-01-07', 3, '09:00:00', 'Instructor level 3', 'Alpine', 'Ski', 'Lutsen Mountains', 50, true, true, true),
-    (2, 1, 'Snowboard Coaching', 'Advanced snowboard coaching session', '2023-02-10', '2023-02-12', 5, '13:00:00', 'Instructor level 4', 'Slopestyle', 'Snowboard', 'Spirit Mountain', 75, true, true, true),
-    (3, 1, 'Freestyle Training', 'Intensive freestyle training camp', '2023-03-15', '2023-03-18', 8, '10:00:00', 'Coach level 100', 'Halfpipe', 'Ski', 'Giants Ridge', 100, true, true, true);
-
-    -- "coach_level" coach_level_enum,
-    -- "activity_type" activity_type_enum,`
-    -- "ski_or_snow" ski_or_snow_enum,
-    -- "location" location_enum,`
+-- Dummy Data Cont'd: Available Gigs for User ID 1 & User ID 2:
+INSERT INTO "gig" ("user_id", "title", "description", "date_for_gig", "year_of_experience", "time_for_gig", "gig_coach_level", "gig_activity_type", "gig_ski_or_snow", "location", "price", "finished_status", "applied_status", "accepted_status")
+VALUES
+    (4, 'Test Ski Club', 'Private ski lesson for beginners', '2023-11-05', 3, '09:00:00', 'Instructor level 3', 'Alpine', 'Ski', 'Lutsen Mountains', 50, false, false, false),
+    (3, 'Snowboard Club C', 'Advanced snowboard coaching session', '2023-12-10', 5, '13:00:00', 'Instructor level 4', 'Slopestyle', 'Snowboard', 'Spirit Mountain', 75, false, false, false);
+    
+-- Dummy Data Cont'd: Gig created by user ID 1:
+INSERT INTO "gig" ("user_id", "title", "description", "date_for_gig", "gig_coach_level", "year_of_experience", "time_for_gig", "gig_activity_type", "gig_ski_or_snow", "location", "price", "finished_status", "applied_status", "accepted_status")
+VALUES
+    (1, 'Prime Ski Club', 'Ski lesson for group of 6 kids and two chaperones, ages ranging 8-12.', '2023-11-15', 'Unqualified', 3, '12:00:00', 'Alpine', 'Ski', 'Afton Alps', 50, false, false, false);

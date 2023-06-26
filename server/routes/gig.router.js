@@ -134,12 +134,12 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 	const userId = req.user.id;
 	const title = req.body.title;
 	const description = req.body.description;
-	const date = req.body.date;
-	const time = req.body.time;
+	const date = req.body.date_for_gig;
+	const time = req.body.time_for_gig;
 	const coach_level = req.body.coach_level;
-	const years = req.body.years;
-	const activity_type = req.body.activity_type;
-	const ski_or_snow = req.body.ski_or_snow;
+	const years = req.body.year_of_experience;
+	const activity_type = req.body.gig_activity_type;
+	const ski_or_snow = req.body.gig_ski_or_snow;
 	const location = req.body.location;
 	const price = req.body.price;
 	const finishedStatus = false;
@@ -170,7 +170,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 	const sqlQuery = `INSERT INTO "gig" ("user_id", "title",  "description", "date_for_gig", 
   "year_of_experience", "time_for_gig", "gig_coach_level", 
-  "gig_activity_type", "gig_ski_or_snow", "location", "price", "finished_status", applied_status, "accepted_status")
+  "gig_activity_type", "gig_ski_or_snow", "location", "price", "finished_status", "applied_status", "accepted_status")
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
   `;
 
