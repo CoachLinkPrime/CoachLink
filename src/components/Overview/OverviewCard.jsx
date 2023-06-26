@@ -15,7 +15,7 @@ const style = {
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 400,
+	width: 300,
 	bgcolor: 'background.paper',
 	border: '2px solid #000',
 	boxShadow: 24,
@@ -41,9 +41,8 @@ function OverviewCard({
 	conditionalRender,
 	accepted_status,
 	finished_status,
-	time_for_gig
+	time_for_gig,
 }) {
-
 	//these variables handle boiler plate for dispatch and boiler plate to help our modal be clicked on to show coach info
 	const dispatch = useDispatch();
 	const [expanded, setExpanded] = useState(false);
@@ -110,7 +109,7 @@ function OverviewCard({
 			);
 		}
 	}
-	
+
 	//this sends a dispatch when a pending gig is accepted to change it to an upcoming gig
 	const handleAccept = (gigID) => {
 		dispatch({
