@@ -36,8 +36,17 @@ function ProfilePage() {
 
     const handleCancel = () => {
         setEditMode(false);
-        setEditedProfile({});
+        setEditedProfile({ ...profile });
     };
+
+    const handleDescriptionClick = () => {
+        if (!editedProfile.description) {
+          setEditedProfile((prevProfile) => ({
+            ...prevProfile,
+            description: 'Olympic gold medalist and world champion downhill skier.',
+          }));
+        }
+      };
 
     return (
         <>
@@ -81,6 +90,7 @@ function ProfilePage() {
                                 name='description'
                                 value={editedProfile.description || ''}
                                 onChange={handleInputChange}
+                                onClick={handleDescriptionClick}
                             ></textarea>
                         </p>
                         <table>

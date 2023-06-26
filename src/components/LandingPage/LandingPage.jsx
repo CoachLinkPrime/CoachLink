@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
 import Footer from '../Footer/Footer';
+import { Button } from '@mui/material';
 
 function LandingPage() {
   const history = useHistory();
@@ -23,10 +24,10 @@ function LandingPage() {
               className='generic-pic'
             />
           </div>
-          <button className="register-button" onClick={onRegrister}>
+          <Button onClick={onRegrister}>
             What is CoachLink?
-          </button>
-          <p>Already have an account? <span className="login-link" onClick={handleLogin}>log in</span></p>
+          </Button>
+          <p>Already have an account? <Button onClick={handleLogin}>log in</Button></p>
         </div>
       </center>
       <Footer />
