@@ -230,9 +230,9 @@ function ProfilePage() {
                                 </label>
                                 <input
                                     type='radio'
-                                    value='Unqualified'
+                                    value='Uncertified'
                                     name='coach_level'
-                                    checked={editedProfile.coach_level === 'Unqualified'}
+                                    checked={editedProfile.coach_level === 'Uncertified'}
                                     onChange={handleInputChange}
                                 />
                             </div>
