@@ -111,7 +111,7 @@ function Overview() {
 					accepted_status,
 					finished_status,
 					time_for_gig,
-					user_descripton,
+					user_description,
 				}) => (
 					<OverviewCard
 						key={master_id}
@@ -134,7 +134,7 @@ function Overview() {
 						accepted_status={accepted_status}
 						finished_status={finished_status}
 						time_for_gig={time_for_gig}
-						user_description={user_descripton}
+						user_description={user_description}
 					/>
 				)
 			)}
