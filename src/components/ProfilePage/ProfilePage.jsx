@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProfilePage.css';
-import { Button, ButtonGroup, TextField, Grid, Radio, FormControlLabel  } from '@mui/material';
+import { Button, ButtonGroup, TextField, Grid, Radio, FormControlLabel } from '@mui/material';
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -308,18 +308,6 @@ function ProfilePage() {
                                                 onChange={handleInputChange}
                                             /></td>
                                         <td><label>
-                                            Boarder Cross
-                                        </label>
-                                            <input
-                                                type='radio'
-                                                value='Boarder cross'
-                                                name='activity_type'
-                                                checked={editedProfile.activity_type === 'Boarder cross'}
-                                                onChange={handleInputChange}
-                                            /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>
                                             Slopestyle
                                         </label>
                                             <input
@@ -327,6 +315,18 @@ function ProfilePage() {
                                                 value='Slopestyle'
                                                 name='activity_type'
                                                 checked={editedProfile.activity_type === 'Slopestyle'}
+                                                onChange={handleInputChange}
+                                            /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>
+                                            Boarder Cross
+                                        </label>
+                                            <input
+                                                type='radio'
+                                                value='Boarder cross'
+                                                name='activity_type'
+                                                checked={editedProfile.activity_type === 'Boarder cross'}
                                                 onChange={handleInputChange}
                                             /></td>
                                         <td><label>
