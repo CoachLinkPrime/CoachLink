@@ -8,6 +8,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
+import ButtonGroup from '@mui/material/ButtonGroup';
+
 
 import CoachingJobApply from './CoachingJobApply';
 
@@ -35,8 +37,27 @@ function CoachingJobCard({ gig, convertDateFormat, cardType }) {
 		if (cardType === true) {
 			return (
 				<>
-					<Button variant='contained'>Edit</Button>
-					<Button variant='contained'>Delete</Button>
+					<ButtonGroup>
+					<Button variant='contained' sx={{
+					backgroundColor: '#7EBBF1',
+					'&:hover': {
+						backgroundColor: '#C6E5F3',
+						color: 'black'
+					},
+					color: 'white'
+					}}>
+					Edit
+					</Button>
+					<Button variant='contained' sx={{
+					backgroundColor: '#e37da1',
+					'&:hover': {
+					backgroundColor: '#de5c75',
+					},
+					color: 'white',
+					}}>
+					Delete
+					</Button>
+					</ButtonGroup>
 				</>
 			);
 		} else {
