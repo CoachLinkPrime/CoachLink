@@ -134,7 +134,7 @@ function App() {
 							<Redirect to='/user' />
 						) : (
 							// Otherwise, show the Landing page
-							<LandingPage />
+							<ExplinationPage />
 						)}
 					</Route>
 
