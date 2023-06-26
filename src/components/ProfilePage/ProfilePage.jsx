@@ -230,9 +230,9 @@ function ProfilePage() {
                                 </label>
                                 <input
                                     type='radio'
-                                    value='Uncertified'
+                                    value='Unqualified'
                                     name='coach_level'
-                                    checked={editedProfile.coach_level === 'Uncertified'}
+                                    checked={editedProfile.coach_level === 'Unqualified'}
                                     onChange={handleInputChange}
                                 />
                             </div>
@@ -397,7 +397,7 @@ function ProfilePage() {
                             <p>Phone Number: {profile.phone_number}</p>
                             <p>Description: {profile.description}</p>
                             <p>ski or snow: {profile.ski_or_snow}</p>
-                            <p>Coach Levels: {profile.coach_level}</p>
+                            <p>Coach Levels: {profile.coach_level != 'Unqualified' ? profile.coach_level : 'Uncertified'}</p>
                             <p>Years of Experience: {profile.years_of_experience}</p>
                             <p>Disciplines: {profile.activity_type}</p>
                         </div>
