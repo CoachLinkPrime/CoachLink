@@ -150,7 +150,7 @@ function OverviewCard({
 				<Typography>Will Pay: ${price}</Typography>
 				<div>
 					<Button align='right' variant='text' onClick={handleOpen}>
-						Your Coach: {name}
+						Coach: {name}
 					</Button>
 					<Modal
 						open={open}
