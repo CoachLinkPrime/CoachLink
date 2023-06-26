@@ -64,31 +64,6 @@ function OverviewCard({
 		) {
 			return (
 				<>
-					<div>
-						<Button align='right' variant='text' onClick={handleOpen}>
-							Your Coach: {name}
-						</Button>
-						<Modal
-							open={open}
-							onClose={handleClose}
-							aria-labelledby='modal-modal-title'
-							aria-describedby='modal-modal-description'>
-							<Box sx={style}>
-								<Typography id='modal-modal-title' variant='h6' component='h2'>
-									Profile for: {name}
-								</Typography>
-								<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-									<Typography>{ski_or_snow} Instructor</Typography>
-									<Typography>
-										{years_of_experience} Years Of Experience
-									</Typography>
-									<Typography>Speciality: {activity_type}</Typography>
-									<Typography>Email: {email}</Typography>
-									<Typography>Phone Number: {phone_number}</Typography>
-								</Typography>
-							</Box>
-						</Modal>
-					</div>
 					<Button variant='contained' onClick={() => handleAccept(id)}>
 						Accept
 					</Button>
@@ -173,6 +148,31 @@ function OverviewCard({
 				</Typography>
 				<Typography>Ski Resort: {location}</Typography>
 				<Typography>Will Pay: ${price}</Typography>
+				<div>
+					<Button align='right' variant='text' onClick={handleOpen}>
+						Your Coach: {name}
+					</Button>
+					<Modal
+						open={open}
+						onClose={handleClose}
+						aria-labelledby='modal-modal-title'
+						aria-describedby='modal-modal-description'>
+						<Box sx={style}>
+							<Typography id='modal-modal-title' variant='h6' component='h2'>
+								Profile for: {name}
+							</Typography>
+							<Typography id='modal-modal-description' sx={{ mt: 2 }}>
+								<Typography>{ski_or_snow} Instructor</Typography>
+								<Typography>
+									{years_of_experience} Years Of Experience
+								</Typography>
+								<Typography>Speciality: {activity_type}</Typography>
+								<Typography>Email: {email}</Typography>
+								<Typography>Phone Number: {phone_number}</Typography>
+							</Typography>
+						</Box>
+					</Modal>
+				</div>
 				{conditionallyRenderForOrgOrCoach()}
 				{condtionallyRenderFinishButton()}
 				<OverviewDelete onClick={() => handleDelete(id)} />
