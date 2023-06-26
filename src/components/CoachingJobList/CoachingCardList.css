@@ -23,6 +23,7 @@ h1 {
 h2.filter-child  {
 	font-size: 16px;
 	font-weight: normal;
+	padding-top: 60px;
 }
 
 /* the title of the Search Filter should take up full width of flex container,
