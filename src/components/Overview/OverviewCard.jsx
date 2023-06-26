@@ -15,7 +15,7 @@ const style = {
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 400,
+	width: 300,
 	bgcolor: 'background.paper',
 	border: '2px solid #000',
 	boxShadow: 24,
@@ -41,9 +41,8 @@ function OverviewCard({
 	conditionalRender,
 	accepted_status,
 	finished_status,
-	time_for_gig
+	time_for_gig,
 }) {
-
 	//these variables handle boiler plate for dispatch and boiler plate to help our modal be clicked on to show coach info
 	const dispatch = useDispatch();
 	const [expanded, setExpanded] = useState(false);
@@ -65,31 +64,6 @@ function OverviewCard({
 		) {
 			return (
 				<>
-					<div>
-						<Button align='right' variant='text' onClick={handleOpen}>
-							Your Coach: {name}
-						</Button>
-						<Modal
-							open={open}
-							onClose={handleClose}
-							aria-labelledby='modal-modal-title'
-							aria-describedby='modal-modal-description'>
-							<Box sx={style}>
-								<Typography id='modal-modal-title' variant='h6' component='h2'>
-									Profile for: {name}
-								</Typography>
-								<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-									<Typography>{ski_or_snow} Instructor</Typography>
-									<Typography>
-										{years_of_experience} Years Of Experience
-									</Typography>
-									<Typography>Speciality: {activity_type}</Typography>
-									<Typography>Email: {email}</Typography>
-									<Typography>Phone Number: {phone_number}</Typography>
-								</Typography>
-							</Box>
-						</Modal>
-					</div>
 					<Button variant='contained' onClick={() => handleAccept(id)}>
 						Accept
 					</Button>
@@ -110,7 +84,7 @@ function OverviewCard({
 			);
 		}
 	}
-	
+
 	//this sends a dispatch when a pending gig is accepted to change it to an upcoming gig
 	const handleAccept = (gigID) => {
 		dispatch({
@@ -174,6 +148,31 @@ function OverviewCard({
 				</Typography>
 				<Typography>Ski Resort: {location}</Typography>
 				<Typography>Will Pay: ${price}</Typography>
+				<div>
+					<Button align='right' variant='text' onClick={handleOpen}>
+						Your Coach: {name}
+					</Button>
+					<Modal
+						open={open}
+						onClose={handleClose}
+						aria-labelledby='modal-modal-title'
+						aria-describedby='modal-modal-description'>
+						<Box sx={style}>
+							<Typography id='modal-modal-title' variant='h6' component='h2'>
+								Profile for: {name}
+							</Typography>
+							<Typography id='modal-modal-description' sx={{ mt: 2 }}>
+								<Typography>{ski_or_snow} Instructor</Typography>
+								<Typography>
+									{years_of_experience} Years Of Experience
+								</Typography>
+								<Typography>Speciality: {activity_type}</Typography>
+								<Typography>Email: {email}</Typography>
+								<Typography>Phone Number: {phone_number}</Typography>
+							</Typography>
+						</Box>
+					</Modal>
+				</div>
 				{conditionallyRenderForOrgOrCoach()}
 				{condtionallyRenderFinishButton()}
 				<OverviewDelete onClick={() => handleDelete(id)} />
