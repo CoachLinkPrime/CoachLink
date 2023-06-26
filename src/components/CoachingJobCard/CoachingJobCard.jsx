@@ -69,9 +69,9 @@ function CoachingJobCard({ gig, convertDateFormat, cardType }) {
 					Day Of Gig: {convertDateFormat(gig.date_for_gig)}, {gig.time_for_gig}
 				</Typography>
 				<Typography variant='body1'>
-					Activity Type: {gig.ski_or_snow} instructor, {gig.activity_type}
+					Activity Type: {gig.gig_ski_or_snow} instructor, {gig.gig_activity_type}
 				</Typography>
-				<Typography>Looking for: {gig.coach_level}</Typography>
+				<Typography>Looking for: {gig.gig_coach_level}</Typography>
 				<Typography>Ski Resort: {gig.location}</Typography>
 				<Typography>Will Pay: ${gig.price}</Typography>
 				{cardTypeRender()}
