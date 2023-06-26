@@ -188,7 +188,7 @@ function ProfilePage() {
                                         </label>
                                         <input
                                             type='radio'
-                                            value='level 300'
+                                            value='Coach level 300'
                                             name='coach_level'
                                             checked={editedProfile.coach_level === 'Coach level 300'}
                                             onChange={handleInputChange}
