@@ -65,7 +65,9 @@ To run the application locally:
 
 11-Open a second terminal and run `npm run client`
 ## Usage
-
+Once everything is installed and running it should open in your default browser - if not, navigate to http://localhost:3000/
+<br>
+Video walkthrough of application usage: https://we.tl/t-iOa0ENdzUY
 ## License
 
 At this time, there is no license on this project. We created this during our time at Prime Digital Academy as students.
