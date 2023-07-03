@@ -23,7 +23,7 @@ The ski and snowboard community is fairly spread-out, so discoverability of teac
 
 ## Screenshots
 
-<img src="./public/images/logo.png" />" 
+<img src="./public/images/logo.png" />
 
 ## Built With
 
