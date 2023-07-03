@@ -32,7 +32,7 @@ The ski and snowboard community is fairly spread-out, so discoverability of teac
 ## Getting Started
 
 After cloning this Github repository to your computer, run npm install for all necessary dependencies. 
-<a href="https://code.visualstudio.com/"><img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original-wordmark.svg" height="40px" width="40px" /></a>
+
 
 ### Prerequisites
 
@@ -44,28 +44,27 @@ You will need all required dependencies listed in the json.package file; to do t
 
 2-Copy the SSH key in your new repository
 
-3-In your terminal type... git clone {paste SSH link}
+3-In your terminal type... `git clone {paste SSH link}`
 
 4-Navigate into the repository's folder in your terminal
 
 5-Open VS Code (or editor of your choice) and open the folder
 
-6-In the terminal of VS Code run npm install and npm install @mui/material @emotion/react @emotion/styled to install all dependencies
+6-In the terminal of VS Code run  `npm install`  and `npm install @mui/material @emotion/react @emotion/styled` to install all dependencies
 
-7-Create a .env file at the root of the project and paste this line into the file:
+7-Create a `.env` file at the root of the project and paste this line into the file:
 SERVER_SESSION_SECRET=superDuperSecret
 
-8-Create a database named TIG_app in PostgresSQL If you would like to name your database something else, you will need to change TIG_app to the name of your new database name in server/modules/pool.js
+8-Create a database named `coach_link` in PostgresSQL If you would like to name your database something else, you will need to change `coach_link` to the name of your new database name in server/modules/pool.js
 
 9-The queries in the database.sql file are set up to create all the necessary tables that you need, as well as a dummy data table to test the app. Copy and paste those queries in the SQL query of the database. If this is going to production, leave out the dummy data.
 
-10-Run npm run server in your VS Code terminal
+To run the application locally:
 
-11-Open a second terminal and run npm run client
+10-Run `npm run server` in your VS Code terminal
+
+11-Open a second terminal and run `npm run client`
 ## Usage
-
-To run the application locally, open two windows in your terminal. First npm run server then npm run client
-
 
 ## License
 
